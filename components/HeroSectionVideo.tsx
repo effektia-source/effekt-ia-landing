@@ -7,9 +7,23 @@ import { droneData } from '@/data/droneData';
 export default function HeroSectionVideo() {
     return (
         <section className="relative w-full h-screen overflow-hidden bg-black">
-            <video autoPlay muted loop className="absolute inset-0 w-full h-full object-cover">
+            {/* Video solo en desktop */}
+            <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="hidden md:block absolute inset-0 w-full h-full object-cover"
+            >
                 <source src={droneData.hero.videoPath} type="video/mp4" />
             </video>
+
+            {/* Imagen fallback solo en mobile */}
+            <div
+                className="block md:hidden absolute inset-0 bg-cover bg-center"
+                style={{ backgroundImage: "url('/images/hero-mobile.jpg')" }}
+            />
+
             <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
             <div className="absolute inset-x-0 bottom-0 h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
 
