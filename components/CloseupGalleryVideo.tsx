@@ -3,7 +3,8 @@
 import { motion } from 'framer-motion';
 
 const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) => (
-    <section className="relative w-full h-[110vh] bg-black overflow-hidden flex flex-col items-center justify-center border-t border-white/5">
+    <section className="relative w-full h-[75vh] md:h-[110vh] bg-black overflow-hidden flex flex-col items-center justify-center border-t border-white/5">
+
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-75">
             <source src={videoPath} type="video/mp4" />
         </video>
@@ -13,24 +14,29 @@ const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) 
             viewport={{ margin: "-20%" }}
             transition={{ duration: 1 }}
             className={`relative z-10 max-w-7xl px-6 w-full
-    ${align === 'left' ? 'ml-20 text-left' :
-                    align === 'right' ? 'mr-20 text-right' :
-                        'ml-24 text-left'}
-  `}
+${align === 'left'
+                    ? 'md:ml-20 text-left'
+                    : align === 'right'
+                        ? 'md:mr-20 text-right'
+                        : 'md:ml-24 text-left'}
+`}
+
         >
 
             <div className={`inline-block ${align === 'center' ? 'mx-auto' : align === 'right' ? 'ml-auto' : ''}`}>
                 <h2 className="
-  text-3xl 
-  md:text-6xl 
-  font-bold 
-  text-transparent 
-  bg-clip-text 
-  bg-gradient-to-b from-white to-white/40 
-  tracking-[-0.04em] 
-  mb-6 
-  font-space 
-  leading-[0.9]
+  text-2xl
+  sm:text-3xl
+  md:text-6xl
+  lg:text-7xl
+  font-bold
+  text-transparent
+  bg-clip-text
+  bg-gradient-to-b from-white to-white/40
+  tracking-[-0.04em]
+  mb-6
+  font-space
+  leading-[0.95]
   whitespace-pre-line
 ">
                     {title}
@@ -38,7 +44,21 @@ const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) 
 
 
 
-                <p className="text-3xl text-gray-300 font-medium max-w-2xl leading-relaxed font-rajdhani">{subtitle}</p>
+
+                <p className="
+  text-base
+  sm:text-lg
+  md:text-2xl
+  lg:text-3xl
+  text-gray-300
+  font-medium
+  max-w-2xl
+  leading-relaxed
+  font-rajdhani
+">
+                    {subtitle}
+                </p>
+
             </div>
         </motion.div>
         <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent" />
