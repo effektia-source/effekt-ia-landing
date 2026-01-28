@@ -11,8 +11,9 @@ export default function PricingTiers() {
 
             <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="text-center mb-20">
-                    <h2 className="text-5xl md:text-7xl font-bold font-space mb-6 tracking-tight">ACQUISITION</h2>
-                    <p className="text-xl text-gray-400 font-rajdhani max-w-2xl mx-auto">Select your operational clearance level.</p>
+                    <h2 className="text-5xl md:text-7xl font-bold font-space mb-6 tracking-tight">PLANES DE CRECIMIENTO
+                    </h2>
+                    <p className="text-xl text-gray-400 font-rajdhani max-w-2xl mx-auto">Elige el nivel de automatización e inteligencia que tu negocio necesita.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -40,7 +41,7 @@ export default function PricingTiers() {
                             </ul>
 
                             <button className="w-full py-4 bg-white/10 hover:bg-white text-white hover:text-black font-space font-bold rounded-lg transition-all duration-300 tracking-widest text-sm border border-white/10 group-hover:border-transparent">
-                                SELECT CONFIGURATION
+                                ELEGIR PLAN
                             </button>
                         </motion.div>
                     ))}
