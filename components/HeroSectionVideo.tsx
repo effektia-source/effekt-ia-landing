@@ -32,7 +32,8 @@ export default function HeroSectionVideo() {
 
 
 
-            <div className="relative z-10 h-full max-w-[1920px] mx-auto px-12">
+            <div className="relative z-10 min-h-full max-w-[1920px] mx-auto px-6 md:px-12 pt-32 pb-32">
+
                 {/* Top HUD */}
                 <div className="absolute top-28 left-0 right-0 hidden md:flex justify-between px-12 pointer-events-none">
 
