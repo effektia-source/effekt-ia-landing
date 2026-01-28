@@ -133,7 +133,8 @@ TRABAJANDO SOLO`}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="max-w-[90rem] mx-auto rounded-[3rem] bg-zinc-900/50 border border-white/10 p-8 md:p-32 overflow-hidden relative"
+                    className="max-w-[90rem] mx-auto rounded-[1.5rem] md:rounded-[3rem]
+ bg-zinc-900/50 border border-white/10 p-8 md:p-32 overflow-hidden relative"
                 >
 
 
@@ -141,7 +142,7 @@ TRABAJANDO SOLO`}
                     <div className="relative z-10">
                         <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-tight">
                             ¿LISTO PARA VENDER MÁS?</h2>
-                        <button className="px-12 py-6 bg-blue-600 text-white text-lg font-bold rounded-full hover:scale-105 transition shadow-[0_0_50px_blue]">COMENZAR AHORA</button>
+                        <button className="w-full px-8 py-5 bg-blue-600 text-white text-lg font-bold rounded-full hover:scale-105 transition shadow-[0_0_50px_blue]">COMENZAR AHORA</button>
                     </div>
                 </motion.div>
             </section>
