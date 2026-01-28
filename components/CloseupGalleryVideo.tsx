@@ -3,7 +3,22 @@
 import { motion } from 'framer-motion';
 
 const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) => (
-    <section className="relative w-full h-[75vh] md:h-[110vh] bg-black overflow-hidden flex flex-col items-center justify-center border-t border-white/5">
+    <section className="
+  relative
+  w-full
+  min-h-[85vh] md:min-h-[110vh]
+  py-20 md:py-0
+  mb-24 md:mb-0
+  bg-black
+  overflow-hidden
+  flex
+  flex-col
+  items-center
+  justify-center
+  border-t
+  border-white/5
+">
+
 
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-75">
             <source src={videoPath} type="video/mp4" />
@@ -69,7 +84,8 @@ ${align === 'left'
 export default function CloseupGalleryVideo() {
     return (
         <div className="bg-black text-white relative z-20">
-            <section className="relative py-40 text-center overflow-hidden">
+            <section className="relative py-24 md:py-40 text-center overflow-hidden">
+
                 {/* Fondo estético */}
                 <div
                     className="absolute inset-0 bg-cover bg-center opacity-80"
@@ -82,7 +98,8 @@ export default function CloseupGalleryVideo() {
                     <h3 className="text-sm font-bold font-space text-blue-500 mb-6 tracking-[0.3em] uppercase">
                         SISTEMAS DIGITALES INTELIGENTES
                     </h3>
-                    <p className="text-7xl font-bold tracking-tight text-white">
+                    <p className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+
                         Diseñados para hacer crecer tu negocio.<br />
                         <span className="text-gray-300">Potenciados por inteligencia artificial.</span>
                     </p>
@@ -111,15 +128,23 @@ TRABAJANDO SOLO`}
 
 
             {/* Spotlight CTA */}
-            <section className="py-40 bg-black text-center px-6">
-                <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} className="max-w-[90rem] mx-auto rounded-[3rem] bg-zinc-900/50 border border-white/10 p-32 overflow-hidden relative">
+            <section className="py-24 md:py-40 bg-black text-center px-6">
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    className="max-w-[90rem] mx-auto rounded-[3rem] bg-zinc-900/50 border border-white/10 p-8 md:p-32 overflow-hidden relative"
+                >
+
+
                     <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-gradient-to-b from-white/5 to-transparent rotate-45 pointer-events-none" />
                     <div className="relative z-10">
-                        <h2 className="text-8xl font-bold text-white mb-8 tracking-tighter">¿LISTO PARA VENDER MÁS?</h2>
+                        <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-tight">
+                            ¿LISTO PARA VENDER MÁS?</h2>
                         <button className="px-12 py-6 bg-blue-600 text-white text-lg font-bold rounded-full hover:scale-105 transition shadow-[0_0_50px_blue]">COMENZAR AHORA</button>
                     </div>
                 </motion.div>
             </section>
-        </div>
+        </div >
     );
 }
