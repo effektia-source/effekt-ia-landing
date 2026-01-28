@@ -30,7 +30,8 @@ export default function HeroSectionVideo() {
 
             <div className="relative z-10 h-full max-w-[1920px] mx-auto px-12">
                 {/* Top HUD */}
-                <div className="absolute top-28 left-0 right-0 flex justify-between px-12 pointer-events-none">
+                <div className="absolute top-28 left-0 right-0 hidden md:flex justify-between px-12 pointer-events-none">
+
                     <div className="flex items-center gap-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-5 py-2.5">
                         <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" />
                         <span className="font-space font-bold text-xs tracking-[0.2em]">
@@ -60,7 +61,8 @@ export default function HeroSectionVideo() {
 
 
                 {/* Bottom Right Metric */}
-                <div className="absolute bottom-12 right-12 bg-black/80 backdrop-blur-3xl border border-white/10 rounded-3xl px-8 py-6 w-[22rem] shadow-2xl shadow-emerald-500/10 border-emerald-500/40
+                <div className="absolute bottom-12 right-12 hidden md:block bg-black/80 ...
+ backdrop-blur-3xl border border-white/10 rounded-3xl px-8 py-6 w-[22rem] shadow-2xl shadow-emerald-500/10 border-emerald-500/40
 ">
 
                     <div className="flex justify-between items-center gap-6">
