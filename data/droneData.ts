@@ -7,9 +7,9 @@ export const droneData = {
     },
     pricing: [
         {
-            id: "starter",
-            name: "Starter",
-            price: "$4,900 MXN",
+            id: "essential",
+            name: "Essential",
+            price: "$4,900 MXN + IVA",
             features: [
                 "Landing page premium",
                 "Optimización móvil",
@@ -18,9 +18,9 @@ export const droneData = {
             ]
         },
         {
-            id: "growth",
-            name: "Growth",
-            price: "$9,900 MXN",
+            id: "pro",
+            name: "Pro",
+            price: "$9,900 MXN + IVA",
             features: [
                 "Web + automatización IA",
                 "Chatbot inteligente",
@@ -29,8 +29,8 @@ export const droneData = {
             ]
         },
         {
-            id: "scale",
-            name: "Scale",
+            id: "elite",
+            name: "Elite",
             price: "Cotización",
             features: [
                 "Agentes de voz IA",
@@ -40,4 +40,5 @@ export const droneData = {
             ]
         }
     ]
+
 };
