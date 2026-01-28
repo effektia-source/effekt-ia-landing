@@ -6,7 +6,8 @@ import { droneData } from '@/data/droneData';
 
 export default function HeroSectionVideo() {
     return (
-        <section className="relative w-full h-screen overflow-hidden bg-black">
+        <section className="relative w-full min-h-[100svh] md:h-screen overflow-hidden bg-black">
+
             {/* Video solo en desktop */}
             <video
                 autoPlay
