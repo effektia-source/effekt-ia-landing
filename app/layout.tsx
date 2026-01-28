@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "RAJ INDUSTRIES | Executioner Drone",
-  description: "Next-generation tactical autonomous drone system.",
+  title: "EFFEKT IA",
+  description: "Sistemas inteligentes para hacer crecer tu negocio",
 };
 
 export default function RootLayout({
