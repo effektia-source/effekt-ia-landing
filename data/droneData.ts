@@ -7,22 +7,37 @@ export const droneData = {
     },
     pricing: [
         {
-            id: "civilian",
-            name: "Research / Civilian",
-            price: "$250,000",
-            features: ["Restricted Flight Params", "Standard Support", "1-Year Warranty"]
+            id: "starter",
+            name: "Starter",
+            price: "$4,900 MXN",
+            features: [
+                "Landing page premium",
+                "Optimización móvil",
+                "Integración WhatsApp",
+                "Soporte básico"
+            ]
         },
         {
-            id: "government",
-            name: "Defense Contractor",
-            price: "$850,000",
-            features: ["Full Weapon Systems", "Military Encryption", "Priority Support"]
+            id: "growth",
+            name: "Growth",
+            price: "$9,900 MXN",
+            features: [
+                "Web + automatización IA",
+                "Chatbot inteligente",
+                "Captura de leads",
+                "Soporte prioritario"
+            ]
         },
         {
-            id: "enterprise",
-            name: "Enterprise Security",
-            price: "Custom Quote",
-            features: ["Perimeter Defense", "Autonomous Patrol", "Fleet Management"]
+            id: "scale",
+            name: "Scale",
+            price: "Cotización",
+            features: [
+                "Agentes de voz IA",
+                "Automatizaciones avanzadas",
+                "Integraciones CRM",
+                "Solución a medida"
+            ]
         }
     ]
 };
