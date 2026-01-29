@@ -24,8 +24,18 @@ export default function PricingTiers() {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             viewport={{ once: true }}
-                            className={`group relative bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 hover:border-blue-500/50 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,122,255,0.15)] flex flex-col`}
+                            className={`group relative bg-white/5 backdrop-blur-md rounded-2xl p-8 border transition-all duration-300 flex flex-col
+    ${tier.name === 'Pro'
+                                    ? 'border-blue-500 shadow-[0_0_40px_rgba(0,122,255,0.25)] scale-[1.02]'
+                                    : 'border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(0,122,255,0.15)]'}
+  `}
                         >
+                            {tier.name === 'Pro' && (
+                                <div className="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full tracking-widest z-20">
+                                    MÁS POPULAR
+                                </div>
+                            )}
+
                             <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl pointer-events-none" />
 
                             <h3 className="text-xl font-bold font-space text-white mb-2">{tier.name.toUpperCase()}</h3>
@@ -40,10 +50,17 @@ export default function PricingTiers() {
                                 ))}
                             </ul>
 
-                            <button className="w-full py-4 bg-white/10 hover:bg-white text-white hover:text-black font-space font-bold rounded-lg transition-all duration-300 tracking-widest text-sm border border-white/10 group-hover:border-transparent">
+                            <a
+                                href={`https://wa.me/5214445166077?text=Hola,%20me%20interesa%20el%20plan%20${tier.name}%20de%20EFFEKT%20IA`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full text-center py-4 bg-white/10 hover:bg-white text-white hover:text-black font-space font-bold rounded-lg transition-all duration-300 tracking-widest text-sm border border-white/10 group-hover:border-transparent"
+                            >
                                 ELEGIR PLAN
-                            </button>
+                            </a>
+
                         </motion.div>
+
                     ))}
                 </div>
             </div>
