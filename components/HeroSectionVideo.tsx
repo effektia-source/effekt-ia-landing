@@ -104,8 +104,15 @@ export default function HeroSectionVideo() {
                         <div className="mt-8 pl-6 border-l-2 border-white/40 pointer-events-auto">
                             <p className="text-xl font-rajdhani text-gray-200">{droneData.hero.subtitle}</p>
                             <div className="flex gap-4 mt-6">
-                                <button className="px-8 py-3 bg-white text-black font-bold font-space text-sm tracking-widest rounded transition hover:scale-105">AGENDA UNA DEMO
-                                </button>
+                                <a
+                                    href="https://wa.me/5214441234567?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-block px-8 py-3 bg-white text-black font-bold font-space text-sm tracking-widest rounded transition hover:scale-105"
+                                >
+                                    AGENDA UNA DEMO
+                                </a>
+
                             </div>
                         </div>
                     </motion.div>
