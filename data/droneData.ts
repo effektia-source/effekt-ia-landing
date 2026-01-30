@@ -11,10 +11,10 @@ export const droneData = {
             name: "Essential",
             price: "$4,900 MXN + IVA",
             features: [
-                "Landing page premium",
-                "Optimización móvil",
-                "Integración WhatsApp",
-                "Soporte básico"
+                "Landing Page Premium",
+                "Respuestas automáticas con IA",
+                "Captura de clientes potenciales",
+                "1 flyer mensual"
             ]
         },
         {
@@ -22,10 +22,10 @@ export const droneData = {
             name: "Pro",
             price: "$9,900 MXN + IVA",
             features: [
-                "Web + automatización IA",
-                "Chatbot inteligente",
-                "Captura de leads",
-                "Soporte prioritario"
+                "Sistema inteligente de atención con IA",
+                "Seguimiento automático a prospectos",
+                "Filtro de clientes interesados",
+                "Video publicitario corto mensual"
             ]
         },
         {
