@@ -1,7 +1,5 @@
 'use client';
 
-
-
 import { motion } from 'framer-motion';
 import { droneData } from '@/data/droneData';
 
@@ -104,7 +102,8 @@ export default function HeroSectionVideo() {
                         </div>
                         <div className="mt-8 pl-6 border-l-2 border-white/40 pointer-events-auto">
                             <p className="text-xl font-rajdhani text-gray-200">{droneData.hero.subtitle}</p>
-                            <div className="flex gap-4 mt-6">
+                            <div className="flex gap-4 mt-6 flex-wrap">
+
                                 <a
                                     href="https://wa.me/5214441234567?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
                                     target="_blank"
@@ -113,6 +112,13 @@ export default function HeroSectionVideo() {
                                 >
                                     AGENDA UNA DEMO
                                 </a>
+                                <a
+                                    href="#planes"
+                                    className="inline-block px-8 py-3 border border-white/40 text-white font-bold font-space text-sm tracking-widest rounded transition hover:bg-white hover:text-black"
+                                >
+                                    VER PLANES
+                                </a>
+
 
                             </div>
                         </div>
