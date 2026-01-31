@@ -105,7 +105,7 @@ export default function HeroSectionVideo() {
                             <div className="flex gap-4 mt-6 flex-wrap">
 
                                 <a
-                                    href="https://wa.me/5214441234567?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
+                                    href="https://wa.me/5214445166077?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-block px-8 py-3 bg-white text-black font-bold font-space text-sm tracking-widest rounded transition hover:scale-105"

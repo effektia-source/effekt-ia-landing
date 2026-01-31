@@ -83,7 +83,8 @@ ${align === 'left'
 
 export default function CloseupGalleryVideo() {
     return (
-        <div className="bg-black text-white relative z-20">
+        <div id="servicios" className="bg-black text-white relative z-20">
+
             <section className="relative py-24 md:py-40 text-center overflow-hidden">
 
                 {/* Fondo estético */}
