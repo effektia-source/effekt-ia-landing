@@ -46,7 +46,7 @@ export default function Navbar() {
                             { label: 'PORTAFOLIO', href: '#planes' },
                             {
                                 label: 'CONTACTO',
-                                href: 'https://wa.me/5214441234567?text=Hola,%20quiero%20información%20sobre%20EFFEKT%20IA',
+                                href: 'https://wa.me/5214445166077?text=Hola,%20quiero%20información%20sobre%20EFFEKT%20IA',
                             },
                         ].map((item) => (
                             <a
