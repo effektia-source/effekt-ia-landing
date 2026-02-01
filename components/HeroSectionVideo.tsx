@@ -32,7 +32,7 @@ export default function HeroSectionVideo() {
 
 
 
-            <div className="relative z-10 min-h-full max-w-[1920px] mx-auto px-6 md:px-12 pt-32 pb-32 hidden md:block">
+            <div className="relative z-10 min-h-full max-w-[1920px] mx-auto px-6 lg:px-12 pt-32 pb-32 hidden lg:block">
 
                 {/* Top HUD */}
                 <div className="absolute top-28 left-0 right-0 hidden md:flex justify-between px-12 pointer-events-none">
@@ -92,7 +92,7 @@ export default function HeroSectionVideo() {
 
 
                 {/* Main Title - Bottom Left */}
-                <div className="absolute bottom-12 left-12 max-w-5xl pointer-events-none hidden md:block">
+                <div className="absolute bottom-12 left-12 max-w-5xl pointer-events-none hidden lg:block">
                     <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
                         <div className="relative">
                             <h1 className="text-[7rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/40 leading-[0.9] tracking-tighter drop-shadow-2xl">
