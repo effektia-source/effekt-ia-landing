@@ -23,7 +23,7 @@ export default function HeroSectionVideo() {
             {/* Imagen fallback solo en mobile */}
             <div
                 className="block md:hidden absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/hero-mobile.jpg')" }}
+                style={{ backgroundImage: "url('/images/hero-mobile.webp')" }}
             />
 
             <div className="absolute inset-x-0 top-0 h-20 md:h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
