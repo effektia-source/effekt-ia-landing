@@ -99,73 +99,74 @@ ${align === 'left'
             <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent" />
         </section>
     );
+};
 
-    export default function CloseupGalleryVideo() {
-        return (
-            <div id="servicios" className="bg-black text-white relative z-20">
+export default function CloseupGalleryVideo() {
+    return (
+        <div id="servicios" className="bg-black text-white relative z-20">
 
-                <section className="relative py-24 md:py-40 text-center overflow-hidden">
+            <section className="relative py-24 md:py-40 text-center overflow-hidden">
 
-                    {/* Fondo estético */}
-                    <div
-                        className="absolute inset-0 bg-cover bg-center opacity-80"
-                        style={{ backgroundImage: "url('/images/section2-bg.jpg')" }}
-                    />
-                    <div className="absolute inset-0 bg-black/40" />
+                {/* Fondo estético */}
+                <div
+                    className="absolute inset-0 bg-cover bg-center opacity-80"
+                    style={{ backgroundImage: "url('/images/section2-bg.jpg')" }}
+                />
+                <div className="absolute inset-0 bg-black/40" />
 
-                    {/* Contenido */}
-                    <div className="relative z-10">
-                        <h3 className="text-sm font-bold font-space text-blue-500 mb-6 tracking-[0.3em] uppercase">
-                            SISTEMAS DIGITALES INTELIGENTES
-                        </h3>
-                        <p className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight text-white leading-tight">
+                {/* Contenido */}
+                <div className="relative z-10">
+                    <h3 className="text-sm font-bold font-space text-blue-500 mb-6 tracking-[0.3em] uppercase">
+                        SISTEMAS DIGITALES INTELIGENTES
+                    </h3>
+                    <p className="text-3xl sm:text-4xl md:text-7xl font-bold tracking-tight text-white leading-tight">
 
-                            Diseñados para hacer crecer tu negocio.<br />
-                            <span className="text-gray-300">Potenciados por inteligencia artificial.</span>
-                        </p>
-                    </div>
-                </section>
+                        Diseñados para hacer crecer tu negocio.<br />
+                        <span className="text-gray-300">Potenciados por inteligencia artificial.</span>
+                    </p>
+                </div>
+            </section>
 
 
-                <ShowcaseSection videoPath="/videos/closeups/vulcan-cannon.mp4" title="VENTAS INTELIGENTES
+            <ShowcaseSection videoPath="/videos/closeups/vulcan-cannon.mp4" title="VENTAS INTELIGENTES
 " subtitle="Impulsadas por IA
 " />
-                <ShowcaseSection
-                    videoPath="/videos/closeups/model-luxury.mp4"
-                    title={`TU MARCA
+            <ShowcaseSection
+                videoPath="/videos/closeups/model-luxury.mp4"
+                title={`TU MARCA
 CON ROSTRO PROPIO`}
-                    subtitle="Modelos digitales realistas para campañas, redes y anuncios."
-                    align="left"
-                />
+                subtitle="Modelos digitales realistas para campañas, redes y anuncios."
+                align="left"
+            />
 
-                <ShowcaseSection
-                    videoPath="/videos/closeups/sensor-integration.mp4"
-                    title={`TU NEGOCIO
+            <ShowcaseSection
+                videoPath="/videos/closeups/sensor-integration.mp4"
+                title={`TU NEGOCIO
 TRABAJANDO SOLO`}
-                    subtitle="Chatbots, automatizaciones y agentes de voz con IA."
-                    align="right"
-                />
+                subtitle="Chatbots, automatizaciones y agentes de voz con IA."
+                align="right"
+            />
 
 
-                {/* Spotlight CTA */}
-                <section className="py-24 md:py-40 bg-black text-center px-6">
+            {/* Spotlight CTA */}
+            <section className="py-24 md:py-40 bg-black text-center px-6">
 
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        className="max-w-[90rem] mx-auto rounded-[1.5rem] md:rounded-[3rem]
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    className="max-w-[90rem] mx-auto rounded-[1.5rem] md:rounded-[3rem]
  bg-zinc-900/50 border border-white/10 p-8 md:p-32 overflow-hidden relative"
-                    >
+                >
 
 
-                        <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-gradient-to-b from-white/5 to-transparent rotate-45 pointer-events-none" />
-                        <div className="relative z-10">
-                            <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-tight">
-                                ¿LISTO PARA VENDER MÁS?</h2>
-                            <button className="w-full px-8 py-5 bg-blue-600 text-white text-lg font-bold rounded-full hover:scale-105 transition shadow-[0_0_50px_blue]">COMENZAR AHORA</button>
-                        </div>
-                    </motion.div>
-                </section>
-            </div >
-        );
-    }
+                    <div className="absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-gradient-to-b from-white/5 to-transparent rotate-45 pointer-events-none" />
+                    <div className="relative z-10">
+                        <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-tight">
+                            ¿LISTO PARA VENDER MÁS?</h2>
+                        <button className="w-full px-8 py-5 bg-blue-600 text-white text-lg font-bold rounded-full hover:scale-105 transition shadow-[0_0_50px_blue]">COMENZAR AHORA</button>
+                    </div>
+                </motion.div>
+            </section>
+        </div >
+    );
+}
