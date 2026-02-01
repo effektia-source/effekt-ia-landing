@@ -92,7 +92,7 @@ export default function HeroSectionVideo() {
 
 
                 {/* Main Title - Bottom Left */}
-                <div className="absolute bottom-12 left-12 max-w-5xl pointer-events-none">
+                <div className="absolute bottom-12 left-12 max-w-5xl pointer-events-none hidden md:block">
                     <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
                         <div className="relative">
                             <h1 className="text-[7rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/40 leading-[0.9] tracking-tighter drop-shadow-2xl">
