@@ -20,7 +20,8 @@ const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) 
 ">
 
 
-        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-75">
+        <video autoPlay muted loop playsInline preload="metadata"
+            poster="/images/model-poster.webp" className="absolute inset-0 w-full h-full object-cover opacity-75">
             <source src={videoPath} type="video/mp4" />
         </video>
         <motion.div
