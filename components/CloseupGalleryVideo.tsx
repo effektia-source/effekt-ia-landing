@@ -112,7 +112,7 @@ export default function CloseupGalleryVideo() {
 " subtitle="Impulsadas por IA
 " />
             <ShowcaseSection
-                videoPath="/videos/closeups/rotor-assembly.mp4"
+                videoPath="/videos/closeups/model-luxury.mp4"
                 title={`TU MARCA
 CON ROSTRO PROPIO`}
                 subtitle="Modelos digitales realistas para campañas, redes y anuncios."
