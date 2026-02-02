@@ -126,7 +126,7 @@ export default function CloseupGalleryVideo() {
                     </p>
                 </div>
                 <div className="mt-14 flex flex-col md:flex-row gap-4 md:gap-12 justify-center text-base md:text-lg
- font-medium tracking-wide text-white/90">
+ font-medium tracking-wide text-white">
                     <span>Automatización de procesos</span>
                     <span>Atención inteligente 24/7</span>
                     <span>Sistemas que escalan contigo</span>
