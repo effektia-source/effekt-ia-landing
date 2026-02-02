@@ -49,7 +49,7 @@ export default function HeroSectionVideo() {
                         href="https://wa.me/5214445166077?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-full rounded-xl bg-white py-4 text-sm font-bold tracking-widest text-black transition hover:scale-105"
+                        className="w-full text-center rounded-xl bg-white py-4 text-sm font-bold tracking-widest text-black transition hover:scale-105"
                     >
                         AGENDA UNA DEMO
                     </a>
