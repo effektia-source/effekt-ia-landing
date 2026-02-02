@@ -142,7 +142,7 @@ export default function HeroSectionVideo() {
                                     rel="noopener noreferrer"
                                     className="inline-block px-8 py-3 bg-white text-black font-bold font-space text-sm tracking-widest rounded transition hover:scale-105"
                                 >
-                                    AGENDA UNA DEMO
+                                    CÓMO FUNCIONA
                                 </a>
                                 <a
                                     href="#planes"
