@@ -71,7 +71,7 @@ export default function Navbar() {
                             : 'bg-white text-black hover:shadow-[0_0_15px_white]'
                             }`}
                     >
-                        HABLEMOS
+                        CONSULTAR
                     </a>
                 </div>
             </div>

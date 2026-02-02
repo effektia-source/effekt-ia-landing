@@ -1,7 +1,7 @@
 export const droneData = {
     hero: {
         title: "THE EXECUTIONER",
-        subtitle: "Landing pages ultra rápidas + automatización con IA",
+        subtitle: "Procesos, ventas y atención automatizados con IA",
 
         videoPath: "/videos/hero/executioner-tactical-operations.mp4",
     },

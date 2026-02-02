@@ -33,7 +33,7 @@ export default function HeroSectionVideo() {
             <div className="relative z-10 flex h-[100svh] flex-col items-center justify-center text-center px-6 pt-24 translate-y-6 lg:hidden">
 
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
-                    WEBS<br />PREMIUM
+                    NEGOCIOS<br />INTELIGENTES
                 </h1>
 
                 <p className="mt-4 text-base sm:text-lg text-white/70 max-w-md">
@@ -51,7 +51,7 @@ export default function HeroSectionVideo() {
                         rel="noopener noreferrer"
                         className="w-full text-center rounded-xl bg-white py-4 text-sm font-bold tracking-widest text-black transition hover:scale-105"
                     >
-                        AGENDA UNA DEMO
+                        CÓMO FUNCIONA
                     </a>
 
                     <a
@@ -128,7 +128,7 @@ export default function HeroSectionVideo() {
                     <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
                         <div className="relative">
                             <h1 className="text-[7rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/40 leading-[0.9] tracking-tighter drop-shadow-2xl">
-                                WEBS<br />PREMIUM
+                                NEGOCIOS<br />INTELIGENTES
                             </h1>
 
                         </div>
