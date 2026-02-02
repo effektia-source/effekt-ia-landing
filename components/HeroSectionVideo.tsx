@@ -56,7 +56,7 @@ export default function HeroSectionVideo() {
 
                     <a
                         href="#planes"
-                        className="w-full rounded-xl border border-white/40 py-4 text-sm font-bold tracking-widest text-white transition hover:bg-white hover:text-black"
+                        className="w-full text-center rounded-xl border border-white/40 py-4 text-sm font-bold tracking-widest text-white transition hover:bg-white hover:text-black"
                     >
                         VER PLANES
                     </a>
