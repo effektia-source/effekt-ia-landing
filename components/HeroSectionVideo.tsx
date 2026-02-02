@@ -30,7 +30,7 @@ export default function HeroSectionVideo() {
 
             <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
             {/* HERO MOBILE */}
-            <div className="relative z-10 flex h-[100svh] flex-col items-center justify-center text-center px-6 pt-24 lg:hidden">
+            <div className="relative z-10 flex h-[100svh] flex-col items-center justify-center text-center px-6 pt-24 translate-y-6 lg:hidden">
 
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
                     WEBS<br />PREMIUM
