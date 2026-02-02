@@ -40,7 +40,11 @@ export default function HeroSectionVideo() {
                     {droneData.hero.subtitle}
                 </p>
 
-                <div className="absolute bottom-10 left-0 right-0 px-6 flex w-full flex-col gap-4">
+
+            </div>
+            {/* BOTONES MOBILE */}
+            <div className="absolute bottom-10 left-0 right-0 z-20 px-6 lg:hidden">
+                <div className="flex w-full flex-col gap-4 max-w-md mx-auto">
                     <a
                         href="https://wa.me/5214445166077?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
                         target="_blank"
@@ -57,8 +61,8 @@ export default function HeroSectionVideo() {
                         VER PLANES
                     </a>
                 </div>
-
             </div>
+
 
             <div className="relative z-10 min-h-full max-w-[1920px] mx-auto px-6 lg:px-12 pt-32 pb-32 hidden lg:block">
 
