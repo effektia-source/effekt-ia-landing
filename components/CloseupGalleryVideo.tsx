@@ -125,7 +125,8 @@ export default function CloseupGalleryVideo() {
                         <span className="text-gray-300">Potenciados por inteligencia artificial.</span>
                     </p>
                 </div>
-                <div className="mt-10 flex flex-col md:flex-row gap-4 md:gap-8 justify-center text-sm font-semibold tracking-wide text-white/100">
+                <div className="mt-14 flex flex-col md:flex-row gap-4 md:gap-12 justify-center text-base md:text-lg
+ font-medium tracking-wide text-white/90">
                     <span>Automatización de procesos</span>
                     <span>Atención inteligente 24/7</span>
                     <span>Sistemas que escalan contigo</span>
