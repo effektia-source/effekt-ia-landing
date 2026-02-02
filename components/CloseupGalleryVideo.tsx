@@ -137,8 +137,7 @@ export default function CloseupGalleryVideo() {
 
 
             <ShowcaseSection videoPath="/videos/closeups/vulcan-cannon.mp4" title="VENTAS INTELIGENTES
-" subtitle="Impulsadas por IA
-" />
+" subtitle="Convierte más clientes con sistemas que venden por ti." />
             <ShowcaseSection
                 videoPath="/videos/closeups/model-luxury.mp4"
                 title={`TU MARCA
