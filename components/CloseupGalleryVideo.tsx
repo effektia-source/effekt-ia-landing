@@ -136,7 +136,7 @@ export default function CloseupGalleryVideo() {
             </section>
 
 
-            <ShowcaseSection videoPath="/videos/closeups/vulcan-cannon.mp4" title="VENTAS INTELIGENTES
+            <ShowcaseSection videoPath="/videos/closeups/ventas-inteligentes.mp4" title="VENTAS INTELIGENTES
 " subtitle="Convierte más clientes con sistemas que venden por ti." />
             <ShowcaseSection
                 videoPath="/videos/closeups/model-luxury.mp4"
