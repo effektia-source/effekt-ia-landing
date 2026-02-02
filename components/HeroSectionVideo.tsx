@@ -29,8 +29,36 @@ export default function HeroSectionVideo() {
             <div className="absolute inset-x-0 top-0 h-20 md:h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
 
             <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
+            {/* HERO MOBILE */}
+            <div className="relative z-10 flex min-h-[85vh] flex-col items-center justify-center text-center px-6 lg:hidden">
 
+                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+                    WEBS<br />PREMIUM
+                </h1>
 
+                <p className="mt-4 text-base sm:text-lg text-white/70 max-w-md">
+                    {droneData.hero.subtitle}
+                </p>
+
+                <div className="mt-8 flex w-full flex-col gap-4">
+                    <a
+                        href="https://wa.me/5214445166077?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-full rounded-xl bg-white py-4 text-sm font-bold tracking-widest text-black transition hover:scale-105"
+                    >
+                        AGENDA UNA DEMO
+                    </a>
+
+                    <a
+                        href="#planes"
+                        className="w-full rounded-xl border border-white/40 py-4 text-sm font-bold tracking-widest text-white transition hover:bg-white hover:text-black"
+                    >
+                        VER PLANES
+                    </a>
+                </div>
+
+            </div>
 
             <div className="relative z-10 min-h-full max-w-[1920px] mx-auto px-6 lg:px-12 pt-32 pb-32 hidden lg:block">
 
