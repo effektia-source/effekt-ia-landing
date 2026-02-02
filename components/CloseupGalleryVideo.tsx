@@ -112,7 +112,7 @@ export default function CloseupGalleryVideo() {
                     className="absolute inset-0 bg-cover bg-center opacity-80"
                     style={{ backgroundImage: "url('/images/section2-bg.jpg')" }}
                 />
-                <div className="absolute inset-0 bg-black/40" />
+                <div className="absolute inset-0 bg-black/20" />
 
                 {/* Contenido */}
                 <div className="relative z-10">
@@ -126,7 +126,8 @@ export default function CloseupGalleryVideo() {
                     </p>
                 </div>
                 <div className="mt-14 flex flex-col md:flex-row gap-4 md:gap-12 justify-center text-base md:text-lg
- font-medium tracking-wide text-white">
+ font-medium tracking-wide text-white drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]
+">
                     <span>Automatización de procesos</span>
                     <span>Atención inteligente 24/7</span>
                     <span>Sistemas que escalan contigo</span>
