@@ -92,7 +92,7 @@ md:justify-center
                     </p>
                 </div>
             </motion.div>
-            <div className="relative z-10 block md:hidden px-6 pt-16 text-center">
+            <div className="relative z-10 block md:hidden px-6 pt-24 text-left max-w-md">
                 <h2 className="text-4xl font-bold mb-4 whitespace-pre-line">
                     {title}
                 </h2>
