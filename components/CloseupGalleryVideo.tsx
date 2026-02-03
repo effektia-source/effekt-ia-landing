@@ -56,51 +56,42 @@ md:justify-center
                 />
             )}
 
-
             <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ margin: "-20%" }}
-                transition={{ duration: 1 }}
-                className="relative z-10 hidden md:flex w-full max-w-7xl px-6"
+                transition={{ duration: 0.8 }}
+                className="
+    relative z-10
+    mt-auto
+    px-6
+    pb-16 md:pb-24
+    max-w-4xl
+  "
             >
-                <div className="w-1/2 pr-12">
-                    <h2 className="
-      text-6xl lg:text-7xl
-      font-bold
-      text-transparent
-      bg-clip-text
-      bg-gradient-to-b from-white to-white/40
-      tracking-[-0.04em]
-      mb-6
-      font-space
-      leading-[0.95]
-      whitespace-pre-line
-    ">
-                        {title}
-                    </h2>
-
-                    <p className="
-      text-2xl lg:text-3xl
-      text-gray-300
-      font-medium
-      max-w-xl
-      leading-relaxed
-      font-rajdhani
-    ">
-                        {subtitle}
-                    </p>
-                </div>
-            </motion.div>
-            <div className="relative z-10 block md:hidden px-6 pt-24 text-left max-w-md">
-                <h2 className="text-4xl font-bold mb-4 whitespace-pre-line">
+                <h2 className="
+    text-4xl md:text-6xl lg:text-7xl
+    font-bold
+    text-transparent
+    bg-clip-text
+    bg-gradient-to-b from-white to-white/50
+    tracking-[-0.04em]
+    mb-4
+    font-space
+    whitespace-pre-line
+  ">
                     {title}
                 </h2>
 
-                <p className="text-base text-white/80">
+                <p className="
+    text-base md:text-xl
+    text-gray-300
+    font-medium
+    max-w-2xl
+    font-rajdhani
+  ">
                     {subtitle}
                 </p>
-            </div>
+            </motion.div>
 
             <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent" />
             <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent" />
