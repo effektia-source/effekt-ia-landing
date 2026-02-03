@@ -3,7 +3,14 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) => {
+const ShowcaseSection = ({
+    videoPath,
+    title,
+    subtitle,
+    align = 'center',
+    mobilePoster
+}: any) => {
+
     const [videoReady, setVideoReady] = useState(false);
 
     return (
@@ -16,9 +23,9 @@ const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) 
           bg-black
           overflow-hidden
           flex
-          flex-col
-          items-center
-          justify-center
+flex-col
+md:items-center
+md:justify-center
           border-t
           border-white/5
         ">
@@ -31,10 +38,9 @@ const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) 
                 loop
                 playsInline
                 preload="metadata"
-                poster="/images/ventas-inteligentes-mobile.webp"
                 onCanPlay={() => setVideoReady(true)}
                 className={`
-    hidden md:block
+    ${mobilePoster ? 'hidden md:block' : ''}
     absolute inset-0 w-full h-full object-cover
     transition-opacity duration-700 ease-out
     ${videoReady ? 'opacity-75' : 'opacity-0'}
@@ -42,10 +48,14 @@ const ShowcaseSection = ({ videoPath, title, subtitle, align = 'center' }: any) 
             >
                 <source src={videoPath} type="video/mp4" />
             </video>
-            <div
-                className="block md:hidden absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/ventas-inteligentes-mobile.webp')" }}
-            />
+
+            {mobilePoster && (
+                <div
+                    className="block md:hidden absolute inset-0 bg-cover bg-center"
+                    style={{ backgroundImage: `url('${mobilePoster}')` }}
+                />
+            )}
+
 
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
@@ -133,8 +143,14 @@ export default function CloseupGalleryVideo() {
             </section>
 
 
-            <ShowcaseSection videoPath="/videos/closeups/ventas-inteligentes.mp4" title="VENTAS INTELIGENTES
-" subtitle="Convierte más clientes con sistemas que venden por ti." />
+            <ShowcaseSection
+                videoPath="/videos/closeups/ventas-inteligentes.mp4"
+                mobilePoster="/images/ventas-inteligentes-mobile.webp"
+                title={`VENTAS
+INTELIGENTES`}
+                subtitle="Convierte más clientes con sistemas que venden por ti."
+            />
+
             <ShowcaseSection
                 videoPath="/videos/closeups/model-luxury.mp4"
                 title={`TU MARCA
