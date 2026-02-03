@@ -61,12 +61,13 @@ md:justify-center
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
                 className="
-    relative z-10
-    mt-auto
-    px-6
-    pb-16 md:pb-24
-    max-w-4xl
-  "
+  relative z-10
+  mt-auto md:mt-0
+  px-6
+  pb-16 md:pb-24
+  max-w-4xl
+"
+
             >
                 <h2 className="
     text-4xl md:text-6xl lg:text-7xl
