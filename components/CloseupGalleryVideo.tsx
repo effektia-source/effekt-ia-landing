@@ -153,9 +153,9 @@ CON ROSTRO PROPIO`}
 
             <ShowcaseSection
                 videoPath="/videos/closeups/sensor-integration.mp4"
-                title={`TU NEGOCIO
-TRABAJANDO SOLO`}
-                subtitle="Chatbots, automatizaciones y agentes de voz con IA."
+                title={`LANDING PAGES
+PREMIUM`}
+                subtitle="Diseñadas para convertir visitas en clientes."
                 align="right"
             />
 
