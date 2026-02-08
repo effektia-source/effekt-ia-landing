@@ -35,7 +35,7 @@ export default function HeroSectionVideo() {
   flex h-[100svh]
   flex-col items-center justify-end
   text-center
-  px-6 pb-76
+  px-6 pb-56
   lg:hidden
 ">
 
