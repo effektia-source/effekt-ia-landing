@@ -16,19 +16,21 @@ const ShowcaseSection = ({
     const [videoReady, setVideoReady] = useState(false);
 
     return (
-        <section className="
-        id={id}
-          relative
-          w-full
-          h-[100dvh]
-          bg-black
-          overflow-hidden
-          flex
-flex-col
-md:items-center
-md:justify-center
-snap-start
-        ">
+        <section
+            id={id}
+            className="
+    relative
+    w-full
+    h-[100dvh]
+    bg-black
+    overflow-hidden
+    flex
+    flex-col
+    md:items-center
+    md:justify-center
+    snap-start
+  "
+        >
 
             {/* Fallback base (siempre existe) */}
             <div
