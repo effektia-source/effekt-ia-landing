@@ -5,7 +5,11 @@ import { droneData } from '@/data/droneData';
 
 export default function HeroSectionVideo() {
     return (
-        <section className="relative w-full h-[85vh] md:h-screen overflow-hidden bg-black">
+        <section
+            id="hero"
+            className="relative w-full h-[85vh] md:h-screen overflow-hidden bg-black"
+        >
+
 
 
 

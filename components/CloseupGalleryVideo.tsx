@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 const ShowcaseSection = ({
+    id,
     videoPath,
     title,
     subtitle,
@@ -11,10 +12,12 @@ const ShowcaseSection = ({
     mobilePoster
 }: any) => {
 
+
     const [videoReady, setVideoReady] = useState(false);
 
     return (
         <section className="
+        id={id}
           relative
           w-full
           h-[100dvh]
@@ -158,6 +161,7 @@ export default function CloseupGalleryVideo() {
 
 
             <ShowcaseSection
+                id="ventas-inteligentes"
                 videoPath="/videos/closeups/ventas-inteligentes.mp4"
                 mobilePoster="/images/ventas-inteligentes-mobile.webp"
                 title={`VENTAS
@@ -166,6 +170,7 @@ INTELIGENTES`}
             />
 
             <ShowcaseSection
+                id="rostro-propio"
                 videoPath="/videos/closeups/model-luxury.mp4"
                 title={`TU MARCA
 CON ROSTRO PROPIO`}
@@ -174,6 +179,7 @@ CON ROSTRO PROPIO`}
             />
 
             <ShowcaseSection
+                id="landing-pages-premium"
                 videoPath="/videos/closeups/landing-pages-hero.mp4"
 
                 mobilePoster="/images/landing-pages-hero-mobile.webp"

@@ -18,11 +18,31 @@ export default function Footer() {
                             SERVICIOS
                         </h4>
                         <ul className="space-y-4 font-rajdhani text-gray-400">
-                            <li><a href="#" className="hover:text-blue-400 transition">Landing Pages Premium</a></li>
-                            <li><a href="#" className="hover:text-blue-400 transition">Automatización con IA</a></li>
-                            <li><a href="#" className="hover:text-blue-400 transition">Chatbots Inteligentes</a></li>
-                            <li><a href="#" className="hover:text-blue-400 transition">Agentes de Voz IA</a></li>
+                            <li>
+                                <a href="#landing-pages-premium" className="hover:text-blue-400 transition">
+                                    Landing Pages Premium
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#hero" className="hover:text-blue-400 transition">
+                                    Automatización con IA
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#ventas-inteligentes" className="hover:text-blue-400 transition">
+                                    Chatbots Inteligentes
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#rostro-propio" className="hover:text-blue-400 transition">
+                                    Modelos Reales con IA
+                                </a>
+                            </li>
                         </ul>
+
                     </div>
 
                     <div>
@@ -30,10 +50,11 @@ export default function Footer() {
                             LEGAL
                         </h4>
                         <ul className="space-y-4 font-rajdhani text-gray-400">
-                            <li><a href="#" className="hover:text-blue-400 transition">Términos y Condiciones</a></li>
-                            <li><a href="#" className="hover:text-blue-400 transition">Aviso de Privacidad</a></li>
-                            <li><a href="#" className="hover:text-blue-400 transition">Política de Cookies</a></li>
+                            <li>Términos y Condiciones</li>
+                            <li>Aviso de Privacidad</li>
+                            <li>Política de Cookies</li>
                         </ul>
+
                     </div>
                 </div>
 
