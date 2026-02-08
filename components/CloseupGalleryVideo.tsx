@@ -24,8 +24,6 @@ const ShowcaseSection = ({
 flex-col
 md:items-center
 md:justify-center
-          border-t
-          border-white/5
         ">
 
             {/* Fallback base (siempre existe) */}
@@ -100,8 +98,6 @@ md:justify-center
                 </p>
             </motion.div>
 
-            <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-black to-transparent" />
-            <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-black to-transparent" />
         </section>
     );
 };
@@ -110,7 +106,8 @@ export default function CloseupGalleryVideo() {
     return (
         <div id="servicios" className="bg-black text-white relative z-20">
 
-            <section className="relative py-24 md:py-40 text-center overflow-hidden">
+            <section className="relative h-screen text-center overflow-hidden flex flex-col justify-center">
+
 
                 {/* Fondo estético */}
                 <div
@@ -170,7 +167,17 @@ PREMIUM`}
 
 
             {/* Spotlight CTA */}
-            <section className="py-24 md:py-40 bg-black text-center px-6">
+            <section className="
+  relative
+  h-screen
+  bg-black
+  text-center
+  px-6
+  flex
+  items-center
+  justify-center
+">
+
 
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
