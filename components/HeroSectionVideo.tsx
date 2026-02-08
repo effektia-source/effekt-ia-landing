@@ -35,18 +35,10 @@ export default function HeroSectionVideo() {
   flex h-[100svh]
   flex-col items-center justify-end
   text-center
-  px-6 pb-40
+  px-6 pb-56
   lg:hidden
 ">
-                {/* Feature Badge */}
-                <div className="mb-6">
-                    <div className="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                        <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                        <span className="text-[10px] font-bold font-space tracking-widest">
-                            AUTOMATIZACIÓN 24/7
-                        </span>
-                    </div>
-                </div>
+
 
 
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
@@ -71,12 +63,6 @@ export default function HeroSectionVideo() {
                         CÓMO FUNCIONA
                     </a>
 
-                    <a
-                        href="#planes"
-                        className="w-full text-center rounded-xl border border-white/40 py-4 text-sm font-bold tracking-widest text-white transition hover:bg-white hover:text-black"
-                    >
-                        VER PLANES
-                    </a>
                 </div>
             </div>
 
