@@ -107,8 +107,17 @@ export default function CloseupGalleryVideo() {
     return (
         <div
             id="servicios"
-            className="bg-black text-white relative z-20 scroll-smooth"
+            className="
+    bg-black
+    text-white
+    relative
+    z-20
+    scroll-smooth
+    snap-y
+    snap-mandatory
+  "
         >
+
 
 
             <section className="relative min-h-[100svh]
