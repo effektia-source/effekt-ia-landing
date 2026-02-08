@@ -156,7 +156,8 @@ CON ROSTRO PROPIO`}
             />
 
             <ShowcaseSection
-                videoPath="/videos/hero/landing-pages-hero.mp4"
+                videoPath="/videos/closeups/landing-pages-hero.mp4"
+
                 mobilePoster="/images/landing-pages-hero-mobile.webp"
                 title={`LANDING PAGES
 PREMIUM`}
