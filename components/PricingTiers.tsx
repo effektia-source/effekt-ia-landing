@@ -80,6 +80,10 @@ export default function PricingTiers() {
 
                     ))}
                 </div>
+                <p className="mt-8 text-center text-sm text-white/50 font-rajdhani">
+                    *Todos los precios son más IVA.
+                </p>
+
             </div>
         </section>
     );
