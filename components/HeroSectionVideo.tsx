@@ -35,19 +35,18 @@ export default function HeroSectionVideo() {
   flex h-[100svh]
   flex-col items-center justify-end
   text-center
-  px-6 pb-56
+  px-6 pb-76
   lg:hidden
 ">
-
-
 
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
                     NEGOCIOS<br />INTELIGENTES
                 </h1>
 
-                <p className="mt-4 text-base sm:text-lg text-white/70 max-w-md">
-                    {droneData.hero.subtitle}
+                <p className="mt-3 text-sm text-white/70 max-w-sm">
+                    Automatización, ventas y atención con IA.
                 </p>
+
 
 
             </div>
