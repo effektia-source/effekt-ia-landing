@@ -125,6 +125,16 @@ export default function HeroSectionVideo() {
                 <div className="absolute bottom-12 left-12 max-w-5xl pointer-events-none hidden lg:block">
                     <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
                         <div className="relative">
+                            {/* Feature Badge */}
+                            <div className="mb-6 pointer-events-none">
+                                <div className="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                                    <span className="text-[10px] font-bold font-space tracking-widest">
+                                        AUTOMATIZACIÓN 24/7
+                                    </span>
+                                </div>
+                            </div>
+
                             <h1 className="text-[7rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/40 leading-[0.9] tracking-tighter drop-shadow-2xl">
                                 NEGOCIOS<br />INTELIGENTES
                             </h1>
