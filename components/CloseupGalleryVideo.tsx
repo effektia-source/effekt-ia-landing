@@ -46,13 +46,15 @@ md:justify-center
                 preload="metadata"
                 onCanPlay={() => setVideoReady(true)}
                 className={`
-    absolute inset-0
-    w-full h-full
-    object-cover
-    z-10
-    transition-opacity duration-700 ease-out
-    ${videoReady ? 'opacity-100' : 'opacity-0'}
-  `}
+  absolute inset-0
+  w-full h-full
+  object-cover
+  object-top
+  z-10
+  transition-opacity duration-700 ease-out
+  ${videoReady ? 'opacity-100' : 'opacity-0'}
+`}
+
             >
                 <source src={videoPath} type="video/mp4" />
             </video>
