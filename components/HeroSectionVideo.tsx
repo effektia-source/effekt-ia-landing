@@ -31,15 +31,16 @@ export default function HeroSectionVideo() {
             <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
 
             {/* HERO MOBILE COPY */}
-            <div className="absolute bottom-28 left-0 right-0 z-20 px-6 text-center lg:hidden">
-                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
+            <div className="absolute bottom-36 left-6 right-6 z-20 lg:hidden">
+                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight text-left">
                     NEGOCIOS<br />INTELIGENTES
                 </h1>
 
-                <p className="mt-3 text-sm text-white/70 max-w-sm mx-auto">
+                <p className="mt-3 text-sm text-white/70 max-w-xs text-left">
                     Automatización, ventas y atención con IA.
                 </p>
             </div>
+
 
             {/* BOTONES MOBILE */}
             <div className="absolute bottom-10 left-0 right-0 z-20 px-6 lg:hidden">
