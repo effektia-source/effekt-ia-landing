@@ -17,7 +17,7 @@ const ShowcaseSection = ({
         <section className="
           relative
           w-full
-          h-screen
+          min-h-[100svh]
           bg-black
           overflow-hidden
           flex
@@ -106,7 +106,8 @@ export default function CloseupGalleryVideo() {
     return (
         <div id="servicios" className="bg-black text-white relative z-20">
 
-            <section className="relative h-screen text-center overflow-hidden flex flex-col justify-center">
+            <section className="relative min-h-[100svh]
+ text-center overflow-hidden flex flex-col justify-center">
 
 
                 {/* Fondo estético */}
@@ -169,7 +170,7 @@ PREMIUM`}
             {/* Spotlight CTA */}
             <section className="
   relative
-  h-screen
+  min-h-[100svh]
   bg-black
   text-center
   px-6
