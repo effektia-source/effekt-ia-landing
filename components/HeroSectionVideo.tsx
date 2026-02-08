@@ -29,27 +29,18 @@ export default function HeroSectionVideo() {
             <div className="absolute inset-x-0 top-0 h-20 md:h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
 
             <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
-            {/* HERO MOBILE */}
-            <div className="
-  relative z-10
-  flex h-[100svh]
-  flex-col items-center justify-end
-  text-center
-  px-6 pb-66
-  lg:hidden
-">
 
+            {/* HERO MOBILE COPY */}
+            <div className="absolute bottom-28 left-0 right-0 z-20 px-6 text-center lg:hidden">
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
                     NEGOCIOS<br />INTELIGENTES
                 </h1>
 
-                <p className="mt-3 text-sm text-white/70 max-w-sm">
+                <p className="mt-3 text-sm text-white/70 max-w-sm mx-auto">
                     Automatización, ventas y atención con IA.
                 </p>
-
-
-
             </div>
+
             {/* BOTONES MOBILE */}
             <div className="absolute bottom-10 left-0 right-0 z-20 px-6 lg:hidden">
                 <div className="flex w-full flex-col gap-4 max-w-md mx-auto">
