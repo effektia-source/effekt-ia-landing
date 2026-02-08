@@ -31,7 +31,7 @@ export default function HeroSectionVideo() {
             <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
 
             {/* HERO MOBILE COPY */}
-            <div className="absolute top-[58%] left-6 right-6 z-20 lg:hidden">
+            <div className="absolute top-[52%] left-6 right-6 z-20 lg:hidden">
 
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight text-left">
                     NEGOCIOS<br />INTELIGENTES
