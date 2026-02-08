@@ -31,6 +31,16 @@ export default function HeroSectionVideo() {
             <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
             {/* HERO MOBILE */}
             <div className="relative z-10 flex h-[100svh] flex-col items-center justify-center text-center px-6 pt-24 translate-y-6 lg:hidden">
+                {/* Feature Badge */}
+                <div className="mb-6">
+                    <div className="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                        <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+                        <span className="text-[10px] font-bold font-space tracking-widest">
+                            AUTOMATIZACIÓN 24/7
+                        </span>
+                    </div>
+                </div>
+
 
                 <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight">
                     NEGOCIOS<br />INTELIGENTES
@@ -84,18 +94,6 @@ export default function HeroSectionVideo() {
                         <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">🤖</div>
                     </div>
                 </div>
-
-                {/* Floating Feature Tag */}
-                <div className="absolute top-[50%] left-[22%] hidden lg:flex flex-col items-center gap-2 pointer-events-none">
-                    <div className="bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                        <span className="text-[10px] font-bold font-space">
-                            AUTOMATIZACIÓN 24/7
-                        </span>
-                    </div>
-
-                </div>
-
 
                 {/* Bottom Right Metric */}
                 <div className="absolute bottom-12 right-12 hidden md:block bg-black/80 ...
