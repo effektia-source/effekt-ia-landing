@@ -104,7 +104,11 @@ md:justify-center
 
 export default function CloseupGalleryVideo() {
     return (
-        <div id="servicios" className="bg-black text-white relative z-20">
+        <div
+            id="servicios"
+            className="bg-black text-white relative z-20 scroll-smooth"
+        >
+
 
             <section className="relative min-h-[100svh]
  text-center overflow-hidden flex flex-col justify-center">
