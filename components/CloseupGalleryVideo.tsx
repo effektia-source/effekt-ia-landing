@@ -75,26 +75,30 @@ snap-start
             >
 
                 <h2 className="
-    text-4xl md:text-6xl lg:text-7xl
-    font-bold
-    text-transparent
-    bg-clip-text
-    bg-gradient-to-b from-white to-white/50
-    tracking-[-0.04em]
-    mb-4
-    font-space
-    whitespace-pre-line
-  ">
+  text-[2.6rem] md:text-6xl lg:text-7xl
+  leading-[0.95]
+  font-bold
+  text-transparent
+  bg-clip-text
+  bg-gradient-to-b from-white to-white/60
+  tracking-[-0.045em]
+  mb-5
+  font-space
+  whitespace-pre-line
+">
+
                     {title}
                 </h2>
 
                 <p className="
-    text-base md:text-xl
-    text-gray-300
-    font-medium
-    max-w-2xl
-    font-rajdhani
-  ">
+  text-[0.95rem] md:text-lg
+  leading-relaxed
+  text-gray-300/90
+  font-medium
+  max-w-lg md:max-w-xl
+  font-rajdhani
+">
+
                     {subtitle}
                 </p>
             </motion.div>
