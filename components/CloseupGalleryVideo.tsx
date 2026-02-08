@@ -17,8 +17,7 @@ const ShowcaseSection = ({
         <section className="
           relative
           w-full
-          min-h-[85vh] md:min-h-[110vh]
-          py-20 md:py-0
+          h-[85vh] md:h-screen
           mb-24 md:mb-0
           bg-black
           overflow-hidden
@@ -30,6 +29,13 @@ md:justify-center
           border-white/5
         ">
 
+            {/* Fallback base (siempre existe) */}
+            <div
+                className="absolute inset-0 bg-cover bg-center z-0"
+                style={{ backgroundImage: `url('${mobilePoster ?? '/images/fallback.jpg'}')` }}
+            />
+
+
 
 
             <video
@@ -40,21 +46,19 @@ md:justify-center
                 preload="metadata"
                 onCanPlay={() => setVideoReady(true)}
                 className={`
-    ${mobilePoster ? 'hidden md:block' : ''}
-    absolute inset-0 w-full h-full object-cover
+    absolute inset-0
+    w-full h-full
+    object-cover
+    z-10
     transition-opacity duration-700 ease-out
-    ${videoReady ? 'opacity-75' : 'opacity-0'}
+    ${videoReady ? 'opacity-100' : 'opacity-0'}
   `}
             >
                 <source src={videoPath} type="video/mp4" />
             </video>
 
-            {mobilePoster && (
-                <div
-                    className="block md:hidden absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: `url('${mobilePoster}')` }}
-                />
-            )}
+            <div className="absolute inset-0 z-20 bg-black/25" />
+
 
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -152,12 +156,14 @@ CON ROSTRO PROPIO`}
             />
 
             <ShowcaseSection
-                videoPath="/videos/closeups/sensor-integration.mp4"
+                videoPath="/videos/hero/landing-pages-hero.mp4"
+                mobilePoster="/images/landing-pages-hero-mobile.webp"
                 title={`LANDING PAGES
 PREMIUM`}
                 subtitle="Diseñadas para convertir visitas en clientes."
                 align="right"
             />
+
 
 
             {/* Spotlight CTA */}
