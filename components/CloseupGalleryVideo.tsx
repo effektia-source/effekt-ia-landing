@@ -24,6 +24,7 @@ const ShowcaseSection = ({
 flex-col
 md:items-center
 md:justify-center
+snap-start
         ">
 
             {/* Fallback base (siempre existe) */}
@@ -111,7 +112,7 @@ export default function CloseupGalleryVideo() {
 
 
             <section className="relative min-h-[100svh]
- text-center overflow-hidden flex flex-col justify-center">
+ text-center overflow-hidden flex flex-col justify-center snap-start">
 
 
                 {/* Fondo estético */}
@@ -181,6 +182,7 @@ PREMIUM`}
   flex
   items-center
   justify-center
+  snap-start
 ">
 
 
