@@ -17,7 +17,7 @@ const ShowcaseSection = ({
         <section className="
           relative
           w-full
-          min-h-[100svh]
+          min-h-[100dvh]
           bg-black
           overflow-hidden
           flex
