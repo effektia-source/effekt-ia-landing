@@ -18,7 +18,7 @@ export default function PricingTiers() {
                     <p className="text-xl text-gray-400 font-rajdhani max-w-2xl mx-auto">Elige el nivel de automatización e inteligencia que tu negocio necesita.</p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {droneData.pricing.map((tier, index) => (
                         <motion.div
                             key={tier.id}
@@ -32,7 +32,7 @@ export default function PricingTiers() {
                                     : 'border-white/10 hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(0,122,255,0.15)]'}
   `}
                         >
-                            {tier.name === 'Pro' && (
+                            {tier.id === 'pro' && (
                                 <div className="absolute -top-3 right-6 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full tracking-widest z-20">
                                     MÁS POPULAR
                                 </div>
@@ -41,7 +41,22 @@ export default function PricingTiers() {
                             <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition duration-500 rounded-2xl pointer-events-none" />
 
                             <h3 className="text-xl font-bold font-space text-white mb-2">{tier.name.toUpperCase()}</h3>
-                            <div className="text-4xl font-bold font-rajdhani text-blue-400 mb-8">{tier.price}</div>
+                            <div className="mb-8">
+                                <p className="text-sm text-white/50 font-space">
+                                    Setup inicial
+                                </p>
+
+                                <p className="text-4xl font-bold font-rajdhani text-blue-400">
+                                    {tier.setupPrice}
+                                </p>
+
+                                {tier.monthlyPrice && (
+                                    <p className="mt-2 text-sm font-bold text-emerald-400 font-space">
+                                        + {tier.monthlyPrice}
+                                    </p>
+                                )}
+                            </div>
+
 
                             <ul className="space-y-4 mb-8 flex-grow">
                                 {tier.features.map((feature, i) => (
