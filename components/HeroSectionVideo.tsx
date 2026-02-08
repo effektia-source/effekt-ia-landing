@@ -30,7 +30,14 @@ export default function HeroSectionVideo() {
 
             <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
             {/* HERO MOBILE */}
-            <div className="relative z-10 flex h-[100svh] flex-col items-center justify-center text-center px-6 pt-24 translate-y-6 lg:hidden">
+            <div className="
+  relative z-10
+  flex h-[100svh]
+  flex-col items-center justify-end
+  text-center
+  px-6 pb-40
+  lg:hidden
+">
                 {/* Feature Badge */}
                 <div className="mb-6">
                     <div className="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
