@@ -219,9 +219,32 @@ PREMIUM`}
                     <div className="relative z-10">
                         <h2 className="text-4xl sm:text-5xl md:text-8xl font-bold text-white mb-8 tracking-tighter leading-tight">
                             ¿LISTO PARA VENDER MÁS?</h2>
-                        <button className="w-full px-8 py-5 bg-blue-600 text-white text-lg font-bold rounded-full hover:scale-105 transition shadow-[0_0_50px_blue]">COMENZAR AHORA</button>
+                        <button
+                            onClick={() =>
+                                window.open(
+                                    'https://airtable.com/appgTCmo1SylLOhb5/pagPwUn3X6Kh9ucvj/form',
+                                    '_blank'
+                                )
+                            }
+                            className="
+    w-full
+    px-8 py-5
+    bg-blue-600
+    text-white
+    text-lg
+    font-bold
+    rounded-full
+    hover:scale-105
+    transition
+    shadow-[0_0_50px_blue]
+  "
+                        >
+                            COMENZAR AHORA
+                        </button>
+
                     </div>
                 </motion.div>
+
             </section>
         </div >
     );
