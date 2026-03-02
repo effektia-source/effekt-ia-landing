@@ -1,4 +1,10 @@
 export const droneData = {
+    hero: {
+        title: "THE EXECUTIONER",
+        subtitle: "Sistema inteligente de automatización, ventas y atención con IA",
+        videoPath: "/videos/hero/executioner-tactical-operations.mp4",
+    },
+
     pricing: [
         {
             id: 'starter',
@@ -46,7 +52,7 @@ export const droneData = {
             features: [
                 'Agentes de Voz IA 24/7',
                 'Landing Pages Inteligentes',
-                'Modelos reales con IA para campañas',
+                'Modelos Reales con IA para Campañas',
                 'Automatización de Redes Sociales',
             ],
         },
