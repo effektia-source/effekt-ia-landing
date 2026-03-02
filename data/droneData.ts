@@ -27,7 +27,7 @@ export const droneData = {
                 'Hasta 3,000 conversaciones mensuales',
                 'CRM básico integrado',
                 'Clasificación automática de clientes',
-                '3 flyers + 1 video de 30seg. mensual',
+                '3 flyers + 1 video de 30 seg. mensuales',
             ],
         },
         {
@@ -47,7 +47,7 @@ export const droneData = {
         {
             id: 'elite',
             name: 'Elite',
-            setupPrice: 'Desde $5,000 MXN',
+            setupPrice: 'Cotización',
             monthlyPrice: 'Cotización personalizada',
             features: [
                 'Agentes de Voz IA 24/7',
