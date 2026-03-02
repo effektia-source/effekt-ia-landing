@@ -27,7 +27,7 @@ export const droneData = {
                 'Hasta 3,000 conversaciones mensuales',
                 'CRM básico integrado',
                 'Clasificación automática de clientes',
-                '3 flyers + 1 video mensual',
+                '3 flyers + 1 video de 30seg. mensual',
             ],
         },
         {
@@ -41,7 +41,7 @@ export const droneData = {
                 'Hasta 8,000 conversaciones mensuales',
                 'CRM avanzado con embudo personalizado',
                 'Seguimiento automático de ventas',
-                '6 flyers + 3 videos mensuales',
+                '6 flyers + 3 videos de 30seg. mensuales',
             ],
         },
         {
