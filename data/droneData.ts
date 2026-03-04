@@ -15,7 +15,7 @@ export const droneData = {
                 'Atención automática por WhatsApp',
                 'Hasta 1,000 conversaciones mensuales',
                 'Captura inteligente de clientes',
-                'Base sólida para comenzar a automatizar',
+                '4 flyers + 2 videos de 30 seg. mensuales',
             ],
         },
         {
