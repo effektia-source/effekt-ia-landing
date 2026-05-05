@@ -222,7 +222,7 @@ PREMIUM`}
                         <button
                             onClick={() =>
                                 window.open(
-                                    'https://airtable.com/appgTCmo1SylLOhb5/pagPwUn3X6Kh9ucvj/form',
+                                    'https://wa.me/5214445418701',
                                     '_blank'
                                 )
                             }

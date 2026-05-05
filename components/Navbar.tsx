@@ -42,7 +42,7 @@ export default function Navbar() {
                             { label: 'PORTAFOLIO', href: '#planes' },
                             {
                                 label: 'CONTACTO',
-                                href: 'https://wa.me/5214445166077?text=Hola,%20quiero%20información%20sobre%20EFFEKT%20IA',
+                                href: 'https://wa.me/5214445418701?text=Hola,%20quiero%20información%20sobre%20EFFEKT%20IA',
                             },
                         ].map((item) => (
                             <a
@@ -59,7 +59,7 @@ export default function Navbar() {
 
                     {/* CTA */}
                     <a
-                        href="https://wa.me/5214445166077?text=Hola,%20quiero%20hablar%20sobre%20una%20solución%20con%20EFFEKT%20IA"
+                        href="https://wa.me/5214445418701?text=Hola,%20quiero%20hablar%20sobre%20una%20solución%20con%20EFFEKT%20IA"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="
