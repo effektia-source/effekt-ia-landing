@@ -1,8 +1,8 @@
 import Navbar from '@/components/Navbar';
 import HeroSectionVideo from '@/components/HeroSectionVideo';
 import CloseupGalleryVideo from '@/components/CloseupGalleryVideo';
-import PricingTiers from '@/components/PricingTiers';
-import Footer from '@/components/Footer';
+// import PricingTiers from '@/components/PricingTiers';
+// import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
@@ -10,8 +10,8 @@ export default function Home() {
       <Navbar />
       <HeroSectionVideo />
       <CloseupGalleryVideo />
-      <PricingTiers />
-      <Footer />
+      {/* <PricingTiers /> */}
+      {/* <Footer /> */}
     </main>
   );
 }

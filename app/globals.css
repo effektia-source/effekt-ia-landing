@@ -9,12 +9,35 @@
   --font-rajdhani: 'Rajdhani', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-black text-white font-rajdhani antialiased;
 }
 
 /* Utilities */
+.section-screen {
+  min-height: 100svh;
+}
+
+@media (min-width: 768px) {
+  .section-screen {
+    min-height: 100dvh;
+  }
+}
+
 .text-shadow { text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1); }
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 .dashed-line {
   background-image: linear-gradient(to bottom, currentColor 50%, transparent 50%);

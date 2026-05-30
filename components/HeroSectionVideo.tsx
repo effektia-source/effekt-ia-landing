@@ -1,157 +1,459 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { droneData } from '@/data/droneData';
+import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+
+const whatsappHref =
+    'https://wa.me/5214445418701?text=Hola,%20quiero%20mejorar%20mi%20negocio%20con%20EFFEKT%20IA';
+
+const AUTO_PLAY_INTERVAL = 6000;
+
+type Slide = {
+    id: string;
+    label: string;
+    title: string;
+    subtitle: string;
+    text: string;
+    accent: string;
+    image?: string;
+    poster?: string;
+    video: string;
+    videoVersion?: string;
+    alt: string;
+};
+
+const slides: Slide[] = [
+    {
+        id: 'reels',
+        label: 'Reels',
+        title: 'Reels premium',
+        subtitle: 'Reels premium para que tu marca destaque.',
+        text: 'Reels premium para que tu marca destaque.',
+        accent: '#ff003c',
+        image: '/images/reel_barberia_premium.png',
+        poster: '/images/reel_barberia_premium.png',
+        video: '/videos/hero/reel_barberia_premium.mp4',
+        alt: 'Reel premium para barberia creado por Effekt IA',
+    },
+    {
+        id: 'flyers',
+        label: 'Flyers',
+        title: 'Flyers premium',
+        subtitle: 'Flyers que hacen que tus promos vendan mas.',
+        text: 'Flyers que hacen que tus promos vendan mas.',
+        accent: '#ff8a00',
+        image: '/images/flyer_hamburguesa_premium.png',
+        poster: '/images/flyer_hamburguesa_premium.png',
+        video: '/videos/hero/flyer_hamburguesa_premium.mp4',
+        alt: 'Flyer premium de hamburguesa para redes sociales',
+    },
+    {
+        id: 'landing',
+        label: 'Landing',
+        title: 'Landing pages',
+        subtitle: 'Landing pages listas para convertir visitas en clientes.',
+        text: 'Landing pages listas para convertir visitas en clientes.',
+        accent: '#9d4edd',
+        image: '/images/landing_page_premium.png',
+        poster: '/images/landing_page_premium.png',
+        video: '/videos/hero/landing_page_premium.mp4',
+        alt: 'Landing page premium para negocios locales',
+    },
+    {
+        id: 'modelos',
+        label: 'Modelos IA',
+        title: 'Modelos IA',
+        subtitle: 'Modelos IA para mostrar tus productos como una gran marca.',
+        text: 'Modelos IA para mostrar tus productos como una gran marca.',
+        accent: '#00e5ff',
+        image: '/images/modelo_ia_beauty_premium.png',
+        poster: '/images/modelo_ia_beauty_premium.png',
+        video: '/videos/hero/modelo_ia_beauty_premium.mp4',
+        alt: 'Modelo IA beauty premium mostrando producto',
+    },
+    {
+        id: 'whatsapp',
+        label: 'WhatsApp',
+        title: 'WhatsApp',
+        subtitle: 'WhatsApp automatizado para responder y agendar.',
+        text: 'WhatsApp automatizado para responder y agendar.',
+        accent: '#25d366',
+        image: undefined,
+        poster: undefined,
+        video: '/videos/hero/whatsapp_automation_premium.mp4',
+        videoVersion: '20260528-142811',
+        alt: 'Automatizacion WhatsApp premium para negocios',
+    },
+];
+
+function ShowcaseCard({
+    slide,
+    active,
+}: {
+    slide: Slide;
+    active: boolean;
+}) {
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const [videoFailed, setVideoFailed] = useState(false);
+    const isAutomationVideo = slide.video.includes('whatsapp_automation_premium.mp4');
+    const shouldUseVideo = active && slide.video && !videoFailed;
+    const isModelVideo = slide.video.includes('modelo_ia_beauty_premium.mp4');
+    const isContainedVideo = slide.video.includes('flyer_hamburguesa_premium.mp4');
+    const videoSrc = 'videoVersion' in slide ? `${slide.video}?v=${slide.videoVersion}` : slide.video;
+
+    useEffect(() => {
+        setVideoFailed(false);
+    }, [slide.id, active]);
+
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        if (shouldUseVideo) {
+            video.currentTime = 0;
+            video.playbackRate = 1;
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    setVideoFailed(true);
+                });
+            }
+            return () => {
+                video.pause();
+                video.currentTime = 0;
+            };
+        }
+
+        video.pause();
+        video.currentTime = 0;
+    }, [shouldUseVideo]);
+
+    return (
+        <div
+            className="relative w-[245px] overflow-hidden rounded-[28px] bg-black shadow-2xl transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
+            style={{
+                aspectRatio: isModelVideo ? '1020 / 1920' : '9 / 16',
+                boxShadow: active
+                    ? '0 0 22px rgba(255, 0, 60, .75), 0 0 70px rgba(255, 0, 60, .35), 0 34px 120px rgba(0,0,0,0.85), inset 0 0 0 1px rgba(255,255,255,0.2)'
+                    : `0 24px 74px rgba(0,0,0,0.66), 0 0 42px ${slide.accent}1f, inset 0 0 0 1px rgba(255,255,255,0.12)`,
+            }}
+        >
+            {shouldUseVideo ? (
+                <video
+                    ref={videoRef}
+                    key={slide.video}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    onError={() => setVideoFailed(true)}
+                    className="h-full w-full bg-black"
+                    style={{
+                        objectFit: isContainedVideo ? 'contain' : 'cover',
+                        objectPosition: isContainedVideo ? 'center top' : 'center',
+                    }}
+                >
+                    <source src={videoSrc} type="video/mp4" />
+                </video>
+            ) : isAutomationVideo && !videoFailed ? (
+                <video
+                    ref={videoRef}
+                    key={`${slide.video}-paused`}
+                    muted
+                    playsInline
+                    preload="metadata"
+                    onLoadedMetadata={(event) => {
+                        event.currentTarget.currentTime = 0;
+                        event.currentTarget.pause();
+                    }}
+                    onError={() => setVideoFailed(true)}
+                    className="h-full w-full bg-black object-cover object-center"
+                >
+                    <source src={videoSrc} type="video/mp4" />
+                </video>
+            ) : slide.poster || slide.image ? (
+                <Image
+                    src={slide.poster ?? slide.image ?? ''}
+                    alt={slide.title}
+                    fill
+                    sizes="260px"
+                    className={isContainedVideo ? 'object-contain object-top' : 'object-cover'}
+                    priority={active}
+                />
+            ) : (
+                <div className="h-full w-full bg-[radial-gradient(circle_at_50%_35%,rgba(255,0,60,0.18),transparent_45%),linear-gradient(180deg,#080808,#000)]" />
+            )}
+        </div>
+    );
+}
+
+function HeroCarousel({
+    activeIndex,
+    setActiveIndex,
+    setPaused,
+}: {
+    activeIndex: number;
+    setActiveIndex: (index: number) => void;
+    setPaused: (paused: boolean) => void;
+}) {
+    const shouldReduceMotion = useReducedMotion();
+    const reduceMotion = Boolean(shouldReduceMotion);
+    const activeSlide = slides[activeIndex];
+    const [pointer, setPointer] = useState({ x: 0, y: 0 });
+
+    const getOffset = (index: number) => {
+        const rawOffset = index - activeIndex;
+        if (rawOffset > slides.length / 2) return rawOffset - slides.length;
+        if (rawOffset < -slides.length / 2) return rawOffset + slides.length;
+        return rawOffset;
+    };
+
+    const getPosition = (offset: number) => {
+        if (offset === 0) {
+            return { x: 0, y: 0, scale: 1, rotateY: 0, opacity: 1, zIndex: 50, blur: 'blur(0px)' };
+        }
+
+        if (offset === -1) {
+            return { x: -150, y: 0, scale: 0.78, rotateY: 18, opacity: 0.75, zIndex: 30, blur: 'blur(0px)' };
+        }
+
+        if (offset === 1) {
+            return { x: 150, y: 0, scale: 0.78, rotateY: -18, opacity: 0.75, zIndex: 30, blur: 'blur(0px)' };
+        }
+
+        if (offset === -2) {
+            return { x: -260, y: 0, scale: 0.62, rotateY: 28, opacity: 0.4, zIndex: 10, blur: 'blur(2px)' };
+        }
+
+        return { x: 260, y: 0, scale: 0.62, rotateY: -28, opacity: 0.4, zIndex: 10, blur: 'blur(2px)' };
+    };
+
+    const goToPrevious = () => {
+        setActiveIndex((activeIndex - 1 + slides.length) % slides.length);
+    };
+
+    const goToNext = () => {
+        setActiveIndex((activeIndex + 1) % slides.length);
+    };
+
+    return (
+        <motion.div
+            initial={reduceMotion ? false : { opacity: 0, scale: 0.94, x: 44 }}
+            animate={reduceMotion ? undefined : { opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+            className="no-scrollbar relative mx-auto mt-6 flex h-[28rem] w-full max-w-full -translate-y-11 items-center justify-center overflow-x-hidden overflow-y-visible pb-16 lg:mt-0 lg:h-[calc(100vh-140px)] lg:min-w-0 lg:pb-20"
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => {
+                setPaused(false);
+                setPointer({ x: 0, y: 0 });
+            }}
+            onMouseMove={(event) => {
+                const rect = event.currentTarget.getBoundingClientRect();
+                setPointer({
+                    x: (event.clientX - rect.left) / rect.width - 0.5,
+                    y: (event.clientY - rect.top) / rect.height - 0.5,
+                });
+            }}
+            aria-label="Carrusel de ejemplos visuales"
+            style={{ perspective: 1600 }}
+        >
+            <motion.div
+                animate={reduceMotion ? undefined : { opacity: [0.2, 0.34, 0.2], scale: [1, 1.08, 1] }}
+                transition={reduceMotion ? undefined : { duration: 6.2, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute left-1/2 top-1/2 h-[20rem] w-[34rem] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl"
+                style={{
+                    background: `radial-gradient(circle, ${activeSlide.accent}1a 0%, rgba(255,0,60,0.07) 42%, transparent 74%)`,
+                    transform: reduceMotion
+                        ? undefined
+                        : `translate(calc(-50% + ${pointer.x * 14}px), calc(-50% + ${pointer.y * 10}px))`,
+                }}
+            />
+            {slides.map((slide, index) => {
+                const offset = getOffset(index);
+                const position = getPosition(offset);
+                const active = offset === 0;
+
+                return (
+                    <motion.div
+                        key={slide.id}
+                        className="absolute left-1/2 top-[39%] -ml-[122.5px] -mt-[217.78px] lg:top-1/2"
+                        animate={{
+                            x: position.x + (reduceMotion ? 0 : pointer.x * (active ? 10 : 4)),
+                            y: position.y + (reduceMotion ? 0 : pointer.y * (active ? 6 : 3)),
+                            scale: position.scale,
+                            rotateY: position.rotateY,
+                            opacity: position.opacity,
+                            zIndex: position.zIndex,
+                            filter: position.blur,
+                        }}
+                        transition={{ duration: 0.86, ease: [0.22, 1, 0.36, 1] }}
+                        style={{
+                            transformStyle: 'preserve-3d',
+                            transformOrigin: 'center bottom',
+                            pointerEvents: active ? 'auto' : 'none',
+                        }}
+                    >
+                        <div>
+                            <ShowcaseCard slide={slide} active={active} />
+                        </div>
+                    </motion.div>
+                );
+            })}
+
+            <div className="absolute bottom-2 left-1/2 z-[70] flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black/28 px-3 py-2 backdrop-blur-xl lg:bottom-5">
+                <button
+                    type="button"
+                    aria-label="Anterior"
+                    onClick={goToPrevious}
+                    className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-[#ff003c]/38 bg-black/38 px-3 py-1.5 font-space text-[0.56rem] font-bold uppercase tracking-[0.13em] text-white/78 shadow-[0_0_18px_rgba(255,0,60,0.14)] transition hover:border-[#ff003c]/80 hover:bg-[#ff003c]/14 hover:text-white hover:shadow-[0_0_28px_rgba(255,0,60,0.3)]"
+                >
+                    <span aria-hidden="true" className="text-xs leading-none text-[#ff003c]">&lt;</span>
+                    Anterior
+                </button>
+                <div className="flex items-center gap-2">
+                    {slides.map((slide, index) => (
+                        <button
+                            key={slide.id}
+                            type="button"
+                            aria-label={`Ver ${slide.label}`}
+                            onClick={() => setActiveIndex(index)}
+                            className="h-1.5 rounded-full transition-all"
+                            style={{
+                                width: index === activeIndex ? '2rem' : '0.5rem',
+                                backgroundColor: index === activeIndex ? 'rgba(255,255,255,1)' : 'rgba(255,255,255,0.35)',
+                            }}
+                        />
+                    ))}
+                </div>
+                <button
+                    type="button"
+                    aria-label="Siguiente"
+                    onClick={goToNext}
+                    className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-[#ff003c]/38 bg-black/38 px-3 py-1.5 font-space text-[0.56rem] font-bold uppercase tracking-[0.13em] text-white/78 shadow-[0_0_18px_rgba(255,0,60,0.14)] transition hover:border-[#ff003c]/80 hover:bg-[#ff003c]/14 hover:text-white hover:shadow-[0_0_28px_rgba(255,0,60,0.3)]"
+                >
+                    Siguiente
+                    <span aria-hidden="true" className="text-xs leading-none text-[#ff003c]">&gt;</span>
+                </button>
+            </div>
+        </motion.div>
+    );
+}
 
 export default function HeroSectionVideo() {
+    const shouldReduceMotion = useReducedMotion();
+    const reduceMotion = Boolean(shouldReduceMotion);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [paused, setPaused] = useState(false);
+    const activeSlide = slides[activeIndex];
+
+    useEffect(() => {
+        if (reduceMotion || paused) return;
+
+        const interval = window.setInterval(() => {
+            setActiveIndex((current) => (current + 1) % slides.length);
+        }, AUTO_PLAY_INTERVAL);
+
+        return () => window.clearInterval(interval);
+    }, [paused, reduceMotion]);
+
     return (
         <section
             id="hero"
-            className="relative w-full h-[85vh] md:h-screen overflow-hidden bg-black"
+            className="section-screen relative w-full scroll-mt-0 overflow-hidden bg-[#050505] text-white"
         >
-
-
-
-
-            {/* Video solo en desktop */}
-            <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="hidden md:block absolute inset-0 w-full h-full object-cover"
-            >
-                <source src={droneData.hero.videoPath} type="video/mp4" />
-            </video>
-
-            {/* Imagen fallback solo en mobile */}
-            <div
-                className="block md:hidden absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: "url('/images/hero-mobile.webp')" }}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_46%,rgba(255,0,60,0.11),transparent_34%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.045),transparent_34%),linear-gradient(135deg,#050505_0%,#080808_50%,#050505_100%)]" />
+            <motion.div
+                key={activeSlide.accent}
+                animate={reduceMotion ? undefined : { opacity: [0.06, 0.14, 0.06], scale: [1, 1.08, 1] }}
+                transition={reduceMotion ? undefined : { duration: 6.4, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute right-[10%] top-[23%] h-[25rem] w-[25rem] rounded-full blur-3xl"
+                style={{ backgroundColor: `${activeSlide.accent}14` }}
             />
+            <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.05),transparent_24%,rgba(255,255,255,0.016)_58%,transparent_76%)] opacity-45" />
+            <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/90 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/78 to-transparent" />
 
-            <div className="absolute inset-x-0 top-0 h-20 md:h-40 bg-gradient-to-b from-black/40 to-transparent pointer-events-none" />
-
-            <div className="absolute inset-x-0 bottom-0 h-48 md:h-[32rem] bg-gradient-to-t from-black/50 via-black/40 to-transparent pointer-events-none" />
-
-            {/* HERO MOBILE COPY */}
-            <div className="absolute top-[40%] left-6 right-6 z-20 lg:hidden">
-
-                <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-white leading-tight text-left">
-                    NEGOCIOS<br />INTELIGENTES
-                </h1>
-
-                <p className="mt-3 text-sm text-white/70 max-w-xs text-left">
-                    Automatización, ventas y atención con IA.
-                </p>
-            </div>
-
-
-            {/* BOTONES MOBILE */}
-            <div className="absolute bottom-10 left-0 right-0 z-20 px-6 lg:hidden">
-                <div className="flex w-full flex-col gap-4 max-w-md mx-auto">
-                    <a
-                        href="https://wa.me/5214445418701?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full text-center rounded-xl bg-white py-4 text-sm font-bold tracking-widest text-black transition hover:scale-105"
+            <div className="relative z-10 mx-auto grid min-h-[inherit] max-w-7xl items-center gap-5 px-6 pb-8 pt-28 sm:pt-32 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] lg:px-10 lg:pb-7 lg:pt-28 xl:px-6">
+                <motion.div
+                    initial={reduceMotion ? false : { y: 28, opacity: 0 }}
+                    animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
+                    transition={{ duration: 0.76, ease: 'easeOut' }}
+                    className="max-w-[37rem]"
+                >
+                    <motion.div
+                        initial={reduceMotion ? false : { y: 12, opacity: 0 }}
+                        animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
+                        transition={{ duration: 0.58, delay: 0.05 }}
+                        className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-white/16 bg-white/[0.06] px-4 py-2 backdrop-blur-xl"
                     >
-                        CÓMO FUNCIONA
-                    </a>
-
-                </div>
-            </div>
-
-
-            <div className="relative z-10 min-h-full max-w-[1920px] mx-auto px-6 lg:px-12 pt-32 pb-32 hidden lg:block">
-
-                {/* Top HUD */}
-                <div className="absolute top-28 left-0 right-0 hidden md:flex justify-between px-12 pointer-events-none">
-
-                    <div className="flex items-center gap-3 bg-white/10 backdrop-blur-xl border border-white/20 rounded-full px-5 py-2.5">
-                        <div className="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-pulse" />
-                        <span className="font-space font-bold text-xs tracking-[0.2em]">
-                            MENSAJES ENTRANDO
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff003c] shadow-[0_0_18px_rgba(255,0,60,0.92)]" />
+                        <span className="font-space text-[0.6rem] font-bold uppercase tracking-[0.18em] text-white/86">
+                            MARKETING PREMIUM CON IA
                         </span>
-
-                    </div>
-                    <div className="flex items-center gap-4 bg-black/40 backdrop-blur-md rounded-full px-5 py-2 border border-white/10">
-                        <div className="text-right"><p className="text-xs font-bold font-space">SOLUCIONES</p>
-                            <p className="text-[10px] text-white/50 uppercase">INTELIGENTES</p>
-
-                        </div>
-                        <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">🤖</div>
-                    </div>
-                </div>
-
-                {/* Bottom Right Metric */}
-                <div className="absolute bottom-12 right-12 hidden md:block bg-black/80 ...
- backdrop-blur-3xl border border-white/10 rounded-3xl px-8 py-6 w-[22rem] shadow-2xl shadow-emerald-500/10 border-emerald-500/40
-">
-
-                    <div className="flex justify-between items-center gap-6">
-
-                        <div>
-                            <p className="text-[10px] font-space text-white/40 tracking-widest">
-                                RESULTADOS REALES
-                            </p>
-                            <p className="text-4xl font-bold font-space">
-                                MÁS VENTAS
-                            </p>
-                            <p className="text-xs text-emerald-400 font-bold tracking-widest mt-1">
-                                PARA TU NEGOCIO
-                            </p>
-
-                        </div>
-                        <div className="w-16 h-16 rounded-full bg-white/10 flex items-center justify-center text-2xl">
-                            ⚡
-                        </div>
-                    </div>
-                </div>
-
-
-                {/* Main Title - Bottom Left */}
-                <div className="absolute bottom-12 left-12 max-w-5xl pointer-events-none hidden lg:block">
-                    <motion.div initial={{ y: 50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
-                        <div className="relative">
-                            {/* Feature Badge */}
-                            <div className="mb-6 pointer-events-none">
-                                <div className="inline-flex items-center gap-2 bg-black/60 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-                                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                                    <span className="text-[10px] font-bold font-space tracking-widest">
-                                        AUTOMATIZACIÓN 24/7
-                                    </span>
-                                </div>
-                            </div>
-
-                            <h1 className="text-[7rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white via-white/80 to-white/40 leading-[0.9] tracking-tighter drop-shadow-2xl">
-                                NEGOCIOS<br />INTELIGENTES
-                            </h1>
-
-                        </div>
-                        <div className="mt-8 pl-6 border-l-2 border-white/40 pointer-events-auto">
-                            <p className="text-xl font-rajdhani text-gray-200">{droneData.hero.subtitle}</p>
-                            <div className="flex gap-4 mt-6 flex-wrap">
-
-                                <a
-                                    href="https://wa.me/5214445418701?text=Hola,%20quiero%20agendar%20una%20demo%20con%20EFFEKT%20IA"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-block px-8 py-3 bg-white text-black font-bold font-space text-sm tracking-widest rounded transition hover:scale-105"
-                                >
-                                    CÓMO FUNCIONA
-                                </a>
-                                <a
-                                    href="#planes"
-                                    className="inline-block px-8 py-3 border border-white/40 text-white font-bold font-space text-sm tracking-widest rounded transition hover:bg-white hover:text-black"
-                                >
-                                    VER PLANES
-                                </a>
-
-
-                            </div>
-                        </div>
                     </motion.div>
+
+                    <motion.h1
+                        initial={reduceMotion ? false : { y: 16, opacity: 0 }}
+                        animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
+                        transition={{ duration: 0.68, delay: 0.12 }}
+                        className="max-w-[35rem] text-[2.75rem] font-bold leading-[0.9] tracking-tight text-white sm:text-6xl lg:text-[4rem] xl:text-[4.45rem]"
+                    >
+                        Tu negocio puede verse <span className="text-[#ff003c] drop-shadow-[0_0_24px_rgba(255,0,60,0.45)]">así.</span>
+                    </motion.h1>
+
+                    <div className="mt-7 min-h-[4.6rem] max-w-[34rem]">
+                        <AnimatePresence mode="wait">
+                            <motion.p
+                                key={activeSlide.text}
+                                initial={reduceMotion ? false : { opacity: 0, y: 12 }}
+                                animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
+                                exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
+                                transition={{ duration: 0.36, ease: 'easeOut' }}
+                                className="font-rajdhani text-2xl leading-relaxed text-white/88 drop-shadow-[0_0_18px_rgba(255,0,60,0.2)] sm:text-[1.7rem] lg:text-[1.68rem]"
+                            >
+                                ✨ {activeSlide.text}
+                            </motion.p>
+                        </AnimatePresence>
+                    </div>
+
+                    <motion.div
+                        initial={reduceMotion ? false : { y: 16, opacity: 0 }}
+                        animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
+                        transition={{ duration: 0.62, delay: 0.28 }}
+                        className="mt-7 flex flex-col gap-3 sm:flex-row"
+                    >
+                        <a
+                            href="#landing-pages-premium"
+                            className="group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-7 py-3 text-center font-space text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%]"
+                        >
+                            <span className="relative z-10">✦</span>
+                            <span className="relative z-10">QUIERO MÁS CLIENTES</span>
+                            <span className="relative z-10 transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                        </a>
+                        <a
+                            href={whatsappHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff2f68]/70 bg-[linear-gradient(110deg,rgba(12,0,7,0.86)_0%,rgba(110,0,72,0.6)_48%,rgba(255,0,60,0.24)_100%)] bg-[length:180%_100%] px-5 py-3 text-center font-space text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_18px_rgba(255,0,60,0.2),inset_0_1px_0_rgba(255,255,255,0.16)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/28 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ff8bb0]/85 hover:bg-[position:100%_0] hover:shadow-[0_0_30px_rgba(255,0,60,0.34),0_0_44px_rgba(190,0,120,0.2),inset_0_1px_0_rgba(255,255,255,0.28)] hover:before:left-[120%] sm:px-6"
+                        >
+                            <span className="relative z-10">VER RESULTADOS</span>
+                            <span className="relative z-10 text-[#ff7a9a] transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                        </a>
+                    </motion.div>
+
+                    <p className="mt-6 max-w-[35rem] text-sm leading-relaxed text-white/70 md:max-w-[560px] md:text-sm">
+                        Landing pages premium, reels cinematográficos, automatización WhatsApp, contenido para redes sociales y marketing con IA para marcas en México.
+                    </p>
+                </motion.div>
+
+                <div className="no-scrollbar relative min-w-0 overflow-x-hidden overflow-y-visible lg:h-[calc(100vh-140px)]">
+                    <HeroCarousel
+                        activeIndex={activeIndex}
+                        setActiveIndex={setActiveIndex}
+                        setPaused={setPaused}
+                    />
                 </div>
             </div>
         </section>

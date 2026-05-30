@@ -3,9 +3,16 @@
 import { motion } from 'framer-motion';
 
 export default function Navbar() {
+    const scrollToSection = (id: string) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
 
     return (
         <motion.nav
+            data-navbar
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             className="fixed top-6 left-0 right-0 z-50 transition-all duration-300"
@@ -13,12 +20,13 @@ export default function Navbar() {
             <div className="
   max-w-7xl mx-auto px-6
   mt-2
-  bg-white/5
-  backdrop-blur-md
+  bg-black/22
+  backdrop-blur-2xl
   border border-white/10
-  py-3
+  py-2.5
   rounded-full
   transition-all
+  shadow-[0_18px_70px_rgba(0,0,0,0.32)]
 ">
                 <div className="flex justify-between items-center px-4">
                     {/* Logo */}
@@ -38,18 +46,19 @@ export default function Navbar() {
                     {/* Links */}
                     <div className="hidden md:flex gap-8">
                         {[
-                            { label: 'SERVICIOS', href: '#servicios' },
-                            { label: 'PORTAFOLIO', href: '#planes' },
-                            {
-                                label: 'CONTACTO',
-                                href: 'https://wa.me/5214445418701?text=Hola,%20quiero%20información%20sobre%20EFFEKT%20IA',
-                            },
+                            { label: 'Servicios', href: '#servicios' },
+                            { label: 'Resultados', href: '#landing-pages-premium' },
+                            { label: 'Paquetes', href: '#planes' },
                         ].map((item) => (
                             <a
                                 key={item.label}
                                 href={item.href}
-                                target={item.href.startsWith('http') ? '_blank' : undefined}
-                                rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                                onClick={(event) => {
+                                    if (item.href === '#servicios') {
+                                        event.preventDefault();
+                                        scrollToSection('servicios');
+                                    }
+                                }}
                                 className="font-rajdhani text-sm tracking-wide text-white/70 hover:text-white transition"
                             >
                                 {item.label}
@@ -59,20 +68,28 @@ export default function Navbar() {
 
                     {/* CTA */}
                     <a
-                        href="https://wa.me/5214445418701?text=Hola,%20quiero%20hablar%20sobre%20una%20solución%20con%20EFFEKT%20IA"
+                        href="https://wa.me/5214445418701?text=Hola,%20quiero%20hablar%20sobre%20una%20soluci%C3%B3n%20con%20EFFEKT%20IA"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="
-  px-5 py-2
-  font-bold font-space text-xs
-  rounded-lg
-  bg-white text-black
-  transition
-  hover:shadow-[0_0_15px_white]
+  relative overflow-hidden
+  px-5 py-1.5
+  font-bold font-space text-[11px]
+  rounded-full
+  bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] text-white
+  border border-[#ff8bb0]/60
+  shadow-[0_0_18px_rgba(255,0,60,0.28),inset_0_1px_0_rgba(255,255,255,0.22)]
+  transition-all duration-[250ms] ease-out
+  before:absolute before:inset-y-0 before:-left-14 before:w-10 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500
+  hover:scale-[1.03]
+  hover:bg-[position:100%_0]
+  hover:border-[#ffc1d2]/80
+  hover:shadow-[0_0_30px_rgba(255,0,60,0.44),0_0_46px_rgba(190,0,120,0.22),inset_0_1px_0_rgba(255,255,255,0.32)]
+  hover:-translate-y-0.5 hover:before:left-[120%]
 "
 
                     >
-                        CONSULTAR
+                        <span className="relative z-10">EMPEZAR AHORA</span>
                     </a>
                 </div>
             </div>
