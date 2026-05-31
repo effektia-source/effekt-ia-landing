@@ -15,30 +15,30 @@ export default function Navbar() {
             data-navbar
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            className="fixed top-6 left-0 right-0 z-50 transition-all duration-300"
+            className="fixed top-3 left-0 right-0 z-50 transition-all duration-300 sm:top-6"
         >
             <div className="
-  max-w-7xl mx-auto px-6
-  mt-2
+  max-w-7xl mx-auto px-4 sm:px-6
+  mt-1 sm:mt-2
   bg-black/22
   backdrop-blur-2xl
   border border-white/10
-  py-2.5
+  py-1.5 sm:py-2.5
   rounded-full
   transition-all
   shadow-[0_18px_70px_rgba(0,0,0,0.32)]
 ">
-                <div className="flex justify-between items-center px-4">
+                <div className="flex justify-between items-center px-2 sm:px-4">
                     {/* Logo */}
                     <a href="/" className="flex items-center gap-1">
-                        <div className="w-10 h-10 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center overflow-hidden">
+                        <div className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center overflow-hidden sm:h-10 sm:w-10">
                             <img
                                 src="/logo.png"
                                 alt="EFFEKT IA"
                                 className="w-full h-full object-cover scale-125"
                             />
                         </div>
-                        <span className="font-space font-bold tracking-widest text-white">
+                        <span className="font-space text-sm font-bold tracking-widest text-white sm:text-base">
                             EFFEKT IA
                         </span>
                     </a>
@@ -47,16 +47,16 @@ export default function Navbar() {
                     <div className="hidden md:flex gap-8">
                         {[
                             { label: 'Servicios', href: '#servicios' },
-                            { label: 'Resultados', href: '#landing-pages-premium' },
+                            { label: 'Resultados', href: '#resultados' },
                             { label: 'Paquetes', href: '#planes' },
                         ].map((item) => (
                             <a
                                 key={item.label}
                                 href={item.href}
                                 onClick={(event) => {
-                                    if (item.href === '#servicios') {
+                                    if (item.href === '#servicios' || item.href === '#resultados') {
                                         event.preventDefault();
-                                        scrollToSection('servicios');
+                                        scrollToSection(item.href.slice(1));
                                     }
                                 }}
                                 className="font-rajdhani text-sm tracking-wide text-white/70 hover:text-white transition"
@@ -73,8 +73,8 @@ export default function Navbar() {
                         rel="noopener noreferrer"
                         className="
   relative overflow-hidden
-  px-5 py-1.5
-  font-bold font-space text-[11px]
+  px-3.5 py-1
+  font-bold font-space text-[9px] sm:px-5 sm:py-1.5 sm:text-[11px]
   rounded-full
   bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] text-white
   border border-[#ff8bb0]/60

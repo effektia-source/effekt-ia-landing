@@ -131,7 +131,7 @@ function ShowcaseCard({
 
     return (
         <div
-            className="relative w-[245px] overflow-hidden rounded-[28px] bg-black shadow-2xl transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02]"
+            className="relative w-[125px] overflow-hidden rounded-[22px] bg-black shadow-2xl transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] sm:w-[245px] sm:rounded-[28px]"
             style={{
                 aspectRatio: isModelVideo ? '1020 / 1920' : '9 / 16',
                 boxShadow: active
@@ -243,7 +243,7 @@ function HeroCarousel({
             initial={reduceMotion ? false : { opacity: 0, scale: 0.94, x: 44 }}
             animate={reduceMotion ? undefined : { opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="no-scrollbar relative mx-auto mt-6 flex h-[28rem] w-full max-w-full -translate-y-11 items-center justify-center overflow-x-hidden overflow-y-visible pb-16 lg:mt-0 lg:h-[calc(100vh-140px)] lg:min-w-0 lg:pb-20"
+            className="no-scrollbar relative mx-auto mt-0 flex h-[14.5rem] w-full max-w-full items-center justify-center overflow-x-hidden overflow-y-visible pb-7 sm:mt-6 sm:h-[28rem] sm:-translate-y-11 sm:pb-16 lg:mt-0 lg:h-[calc(100vh-140px)] lg:min-w-0 lg:pb-20"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => {
                 setPaused(false);
@@ -278,7 +278,7 @@ function HeroCarousel({
                 return (
                     <motion.div
                         key={slide.id}
-                        className="absolute left-1/2 top-[39%] -ml-[122.5px] -mt-[217.78px] lg:top-1/2"
+                        className="absolute left-1/2 top-[45%] -ml-[62.5px] -mt-[111.11px] sm:top-[39%] sm:-ml-[122.5px] sm:-mt-[217.78px] lg:top-1/2"
                         animate={{
                             x: position.x + (reduceMotion ? 0 : pointer.x * (active ? 10 : 4)),
                             y: position.y + (reduceMotion ? 0 : pointer.y * (active ? 6 : 3)),
@@ -302,17 +302,17 @@ function HeroCarousel({
                 );
             })}
 
-            <div className="absolute bottom-2 left-1/2 z-[70] flex -translate-x-1/2 items-center gap-3 rounded-full border border-white/10 bg-black/28 px-3 py-2 backdrop-blur-xl lg:bottom-5">
+            <div className="absolute bottom-1 left-1/2 z-[70] flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-black/28 px-2.5 py-1.5 backdrop-blur-xl sm:bottom-2 sm:gap-3 sm:px-3 sm:py-2 lg:bottom-5">
                 <button
                     type="button"
                     aria-label="Anterior"
                     onClick={goToPrevious}
-                    className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-[#ff003c]/38 bg-black/38 px-3 py-1.5 font-space text-[0.56rem] font-bold uppercase tracking-[0.13em] text-white/78 shadow-[0_0_18px_rgba(255,0,60,0.14)] transition hover:border-[#ff003c]/80 hover:bg-[#ff003c]/14 hover:text-white hover:shadow-[0_0_28px_rgba(255,0,60,0.3)]"
+                    className="inline-flex min-h-7 items-center gap-1 rounded-full border border-[#ff003c]/38 bg-black/38 px-2.5 py-1 font-space text-[0.5rem] font-bold uppercase tracking-[0.1em] text-white/78 shadow-[0_0_18px_rgba(255,0,60,0.14)] transition hover:border-[#ff003c]/80 hover:bg-[#ff003c]/14 hover:text-white hover:shadow-[0_0_28px_rgba(255,0,60,0.3)] sm:min-h-8 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-[0.56rem] sm:tracking-[0.13em]"
                 >
                     <span aria-hidden="true" className="text-xs leading-none text-[#ff003c]">&lt;</span>
                     Anterior
                 </button>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-1.5 sm:gap-2">
                     {slides.map((slide, index) => (
                         <button
                             key={slide.id}
@@ -331,7 +331,7 @@ function HeroCarousel({
                     type="button"
                     aria-label="Siguiente"
                     onClick={goToNext}
-                    className="inline-flex min-h-8 items-center gap-1.5 rounded-full border border-[#ff003c]/38 bg-black/38 px-3 py-1.5 font-space text-[0.56rem] font-bold uppercase tracking-[0.13em] text-white/78 shadow-[0_0_18px_rgba(255,0,60,0.14)] transition hover:border-[#ff003c]/80 hover:bg-[#ff003c]/14 hover:text-white hover:shadow-[0_0_28px_rgba(255,0,60,0.3)]"
+                    className="inline-flex min-h-7 items-center gap-1 rounded-full border border-[#ff003c]/38 bg-black/38 px-2.5 py-1 font-space text-[0.5rem] font-bold uppercase tracking-[0.1em] text-white/78 shadow-[0_0_18px_rgba(255,0,60,0.14)] transition hover:border-[#ff003c]/80 hover:bg-[#ff003c]/14 hover:text-white hover:shadow-[0_0_28px_rgba(255,0,60,0.3)] sm:min-h-8 sm:gap-1.5 sm:px-3 sm:py-1.5 sm:text-[0.56rem] sm:tracking-[0.13em]"
                 >
                     Siguiente
                     <span aria-hidden="true" className="text-xs leading-none text-[#ff003c]">&gt;</span>
@@ -368,14 +368,14 @@ export default function HeroSectionVideo() {
                 key={activeSlide.accent}
                 animate={reduceMotion ? undefined : { opacity: [0.06, 0.14, 0.06], scale: [1, 1.08, 1] }}
                 transition={reduceMotion ? undefined : { duration: 6.4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute right-[10%] top-[23%] h-[25rem] w-[25rem] rounded-full blur-3xl"
+                className="absolute right-[10%] top-[23%] hidden h-[25rem] w-[25rem] rounded-full blur-3xl sm:block"
                 style={{ backgroundColor: `${activeSlide.accent}14` }}
             />
             <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.05),transparent_24%,rgba(255,255,255,0.016)_58%,transparent_76%)] opacity-45" />
             <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/90 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/78 to-transparent" />
 
-            <div className="relative z-10 mx-auto grid min-h-[inherit] max-w-7xl items-center gap-5 px-6 pb-8 pt-28 sm:pt-32 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] lg:px-10 lg:pb-7 lg:pt-28 xl:px-6">
+            <div className="relative z-10 mx-auto grid min-h-[inherit] max-w-7xl items-start gap-0 px-5 pb-2 pt-[4.25rem] sm:items-center sm:gap-5 sm:px-6 sm:pb-8 sm:pt-32 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] lg:px-10 lg:pb-7 lg:pt-28 xl:px-6">
                 <motion.div
                     initial={reduceMotion ? false : { y: 28, opacity: 0 }}
                     animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
@@ -386,7 +386,7 @@ export default function HeroSectionVideo() {
                         initial={reduceMotion ? false : { y: 12, opacity: 0 }}
                         animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
                         transition={{ duration: 0.58, delay: 0.05 }}
-                        className="mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-white/16 bg-white/[0.06] px-4 py-2 backdrop-blur-xl"
+                        className="mb-3 hidden max-w-full items-center gap-2 rounded-full border border-white/16 bg-white/[0.06] px-3 py-1.5 backdrop-blur-xl sm:mb-6 sm:inline-flex sm:px-4 sm:py-2"
                     >
                         <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-[#ff003c] shadow-[0_0_18px_rgba(255,0,60,0.92)]" />
                         <span className="font-space text-[0.6rem] font-bold uppercase tracking-[0.18em] text-white/86">
@@ -398,12 +398,12 @@ export default function HeroSectionVideo() {
                         initial={reduceMotion ? false : { y: 16, opacity: 0 }}
                         animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
                         transition={{ duration: 0.68, delay: 0.12 }}
-                        className="max-w-[35rem] text-[2.75rem] font-bold leading-[0.9] tracking-tight text-white sm:text-6xl lg:text-[4rem] xl:text-[4.45rem]"
+                        className="max-w-[35rem] text-[1.76rem] font-bold leading-[0.9] tracking-tight text-white sm:text-6xl lg:text-[4rem] xl:text-[4.45rem]"
                     >
                         Tu negocio puede verse <span className="text-[#ff003c] drop-shadow-[0_0_24px_rgba(255,0,60,0.45)]">así.</span>
                     </motion.h1>
 
-                    <div className="mt-7 min-h-[4.6rem] max-w-[34rem]">
+                    <div className="mt-1.5 min-h-[2.1rem] max-w-[34rem] sm:mt-7 sm:min-h-[4.6rem]">
                         <AnimatePresence mode="wait">
                             <motion.p
                                 key={activeSlide.text}
@@ -411,7 +411,7 @@ export default function HeroSectionVideo() {
                                 animate={reduceMotion ? undefined : { opacity: 1, y: 0 }}
                                 exit={reduceMotion ? undefined : { opacity: 0, y: -10 }}
                                 transition={{ duration: 0.36, ease: 'easeOut' }}
-                                className="font-rajdhani text-2xl leading-relaxed text-white/88 drop-shadow-[0_0_18px_rgba(255,0,60,0.2)] sm:text-[1.7rem] lg:text-[1.68rem]"
+                                className="font-rajdhani text-[0.96rem] leading-snug text-white/88 drop-shadow-[0_0_18px_rgba(255,0,60,0.2)] sm:text-[1.7rem] sm:leading-relaxed lg:text-[1.68rem]"
                             >
                                 ✨ {activeSlide.text}
                             </motion.p>
@@ -422,11 +422,11 @@ export default function HeroSectionVideo() {
                         initial={reduceMotion ? false : { y: 16, opacity: 0 }}
                         animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
                         transition={{ duration: 0.62, delay: 0.28 }}
-                        className="mt-7 flex flex-col gap-3 sm:flex-row"
+                        className="mt-4 hidden flex-col gap-3 sm:mt-7 sm:flex sm:flex-row"
                     >
                         <a
                             href="#landing-pages-premium"
-                            className="group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-7 py-3 text-center font-space text-xs font-bold uppercase tracking-[0.16em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%]"
+                            className="group relative inline-flex min-h-10 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 text-center font-space text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%] sm:min-h-12 sm:px-7 sm:py-3 sm:text-xs sm:tracking-[0.16em]"
                         >
                             <span className="relative z-10">✦</span>
                             <span className="relative z-10">QUIERO MÁS CLIENTES</span>
@@ -436,14 +436,14 @@ export default function HeroSectionVideo() {
                             href={whatsappHref}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group relative inline-flex min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff2f68]/70 bg-[linear-gradient(110deg,rgba(12,0,7,0.86)_0%,rgba(110,0,72,0.6)_48%,rgba(255,0,60,0.24)_100%)] bg-[length:180%_100%] px-5 py-3 text-center font-space text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_18px_rgba(255,0,60,0.2),inset_0_1px_0_rgba(255,255,255,0.16)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/28 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ff8bb0]/85 hover:bg-[position:100%_0] hover:shadow-[0_0_30px_rgba(255,0,60,0.34),0_0_44px_rgba(190,0,120,0.2),inset_0_1px_0_rgba(255,255,255,0.28)] hover:before:left-[120%] sm:px-6"
+                            className="group relative hidden min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff2f68]/70 bg-[linear-gradient(110deg,rgba(12,0,7,0.86)_0%,rgba(110,0,72,0.6)_48%,rgba(255,0,60,0.24)_100%)] bg-[length:180%_100%] px-5 py-3 text-center font-space text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_18px_rgba(255,0,60,0.2),inset_0_1px_0_rgba(255,255,255,0.16)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/28 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ff8bb0]/85 hover:bg-[position:100%_0] hover:shadow-[0_0_30px_rgba(255,0,60,0.34),0_0_44px_rgba(190,0,120,0.2),inset_0_1px_0_rgba(255,255,255,0.28)] hover:before:left-[120%] sm:inline-flex sm:px-6"
                         >
                             <span className="relative z-10">VER RESULTADOS</span>
                             <span className="relative z-10 text-[#ff7a9a] transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
                         </a>
                     </motion.div>
 
-                    <p className="mt-6 max-w-[35rem] text-sm leading-relaxed text-white/70 md:max-w-[560px] md:text-sm">
+                    <p className="mt-6 hidden max-w-[35rem] text-sm leading-relaxed text-white/70 sm:block md:max-w-[560px] md:text-sm">
                         Landing pages premium, reels cinematográficos, automatización WhatsApp, contenido para redes sociales y marketing con IA para marcas en México.
                     </p>
                 </motion.div>
@@ -455,6 +455,14 @@ export default function HeroSectionVideo() {
                         setPaused={setPaused}
                     />
                 </div>
+
+                <a
+                    href="#landing-pages-premium"
+                    className="group relative -mt-1 inline-flex min-h-10 w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 text-center font-space text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%] sm:hidden"
+                >
+                    <span className="relative z-10">QUIERO MÁS CLIENTES</span>
+                    <span className="relative z-10 transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
+                </a>
             </div>
         </section>
     );

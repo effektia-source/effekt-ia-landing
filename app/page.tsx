@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar';
 import HeroSectionVideo from '@/components/HeroSectionVideo';
 import CloseupGalleryVideo from '@/components/CloseupGalleryVideo';
+import ResultsSection from '@/components/landing/ResultsSection';
 // import PricingTiers from '@/components/PricingTiers';
 // import Footer from '@/components/Footer';
 
@@ -10,6 +11,7 @@ export default function Home() {
       <Navbar />
       <HeroSectionVideo />
       <CloseupGalleryVideo />
+      <ResultsSection />
       {/* <PricingTiers /> */}
       {/* <Footer /> */}
     </main>
