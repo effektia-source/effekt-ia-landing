@@ -41,6 +41,16 @@ const services = [
     },
 ];
 
+type ShowcaseSectionProps = {
+    id: string;
+    videoPath: string;
+    title: string;
+    subtitle: string;
+    align?: 'left' | 'center' | 'right';
+    mobilePoster?: string;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ShowcaseSection = ({
     id,
     videoPath,
@@ -48,7 +58,8 @@ const ShowcaseSection = ({
     subtitle,
     align = 'center',
     mobilePoster
-}: any) => {
+}: ShowcaseSectionProps) => {
+    void align;
     const [videoReady, setVideoReady] = useState(false);
 
     return (

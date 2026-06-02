@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 
 const whatsappHref =
-    'https://wa.me/5214445418701?text=Hola,%20quiero%20mejorar%20mi%20negocio%20con%20EFFEKT%20IA';
+    'https://wa.me/524445166077';
 
 const AUTO_PLAY_INTERVAL = 6000;
 
@@ -95,16 +95,13 @@ function ShowcaseCard({
     active: boolean;
 }) {
     const videoRef = useRef<HTMLVideoElement>(null);
-    const [videoFailed, setVideoFailed] = useState(false);
+    const [failedVideoId, setFailedVideoId] = useState<string | null>(null);
+    const videoFailed = failedVideoId === slide.id;
     const isAutomationVideo = slide.video.includes('whatsapp_automation_premium.mp4');
     const shouldUseVideo = active && slide.video && !videoFailed;
     const isModelVideo = slide.video.includes('modelo_ia_beauty_premium.mp4');
     const isContainedVideo = slide.video.includes('flyer_hamburguesa_premium.mp4');
     const videoSrc = 'videoVersion' in slide ? `${slide.video}?v=${slide.videoVersion}` : slide.video;
-
-    useEffect(() => {
-        setVideoFailed(false);
-    }, [slide.id, active]);
 
     useEffect(() => {
         const video = videoRef.current;
@@ -116,7 +113,7 @@ function ShowcaseCard({
             const playPromise = video.play();
             if (playPromise !== undefined) {
                 playPromise.catch(() => {
-                    setVideoFailed(true);
+                    setFailedVideoId(slide.id);
                 });
             }
             return () => {
@@ -127,7 +124,7 @@ function ShowcaseCard({
 
         video.pause();
         video.currentTime = 0;
-    }, [shouldUseVideo]);
+    }, [shouldUseVideo, slide.id]);
 
     return (
         <div
@@ -148,7 +145,7 @@ function ShowcaseCard({
                     loop
                     playsInline
                     preload="metadata"
-                    onError={() => setVideoFailed(true)}
+                    onError={() => setFailedVideoId(slide.id)}
                     className="h-full w-full bg-black"
                     style={{
                         objectFit: isContainedVideo ? 'contain' : 'cover',
@@ -168,7 +165,7 @@ function ShowcaseCard({
                         event.currentTarget.currentTime = 0;
                         event.currentTarget.pause();
                     }}
-                    onError={() => setVideoFailed(true)}
+                    onError={() => setFailedVideoId(slide.id)}
                     className="h-full w-full bg-black object-cover object-center"
                 >
                     <source src={videoSrc} type="video/mp4" />
@@ -425,7 +422,9 @@ export default function HeroSectionVideo() {
                         className="mt-4 hidden flex-col gap-3 sm:mt-7 sm:flex sm:flex-row"
                     >
                         <a
-                            href="#landing-pages-premium"
+                            href={whatsappHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="group relative inline-flex min-h-10 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 text-center font-space text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%] sm:min-h-12 sm:px-7 sm:py-3 sm:text-xs sm:tracking-[0.16em]"
                         >
                             <span className="relative z-10">✦</span>
@@ -433,9 +432,7 @@ export default function HeroSectionVideo() {
                             <span className="relative z-10 transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>
                         </a>
                         <a
-                            href={whatsappHref}
-                            target="_blank"
-                            rel="noopener noreferrer"
+                            href="#resultados"
                             className="group relative hidden min-h-12 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff2f68]/70 bg-[linear-gradient(110deg,rgba(12,0,7,0.86)_0%,rgba(110,0,72,0.6)_48%,rgba(255,0,60,0.24)_100%)] bg-[length:180%_100%] px-5 py-3 text-center font-space text-xs font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_18px_rgba(255,0,60,0.2),inset_0_1px_0_rgba(255,255,255,0.16)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/28 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ff8bb0]/85 hover:bg-[position:100%_0] hover:shadow-[0_0_30px_rgba(255,0,60,0.34),0_0_44px_rgba(190,0,120,0.2),inset_0_1px_0_rgba(255,255,255,0.28)] hover:before:left-[120%] sm:inline-flex sm:px-6"
                         >
                             <span className="relative z-10">VER RESULTADOS</span>
@@ -457,7 +454,9 @@ export default function HeroSectionVideo() {
                 </div>
 
                 <a
-                    href="#landing-pages-premium"
+                    href={whatsappHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group relative -mt-1 inline-flex min-h-10 w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 text-center font-space text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%] sm:hidden"
                 >
                     <span className="relative z-10">QUIERO MÁS CLIENTES</span>

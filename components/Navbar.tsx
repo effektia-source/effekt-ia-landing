@@ -1,8 +1,42 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 
 export default function Navbar() {
+    const navRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        const navbar = navRef.current;
+        if (!navbar) return;
+
+        let animationFrame = 0;
+
+        const updateNavbarMetrics = () => {
+            window.cancelAnimationFrame(animationFrame);
+            animationFrame = window.requestAnimationFrame(() => {
+                const navbarHeight = navbar.offsetHeight;
+                const navbarClearance = navbar.offsetTop + navbarHeight;
+                document.documentElement.style.setProperty('--navbar-height', `${navbarHeight}px`);
+                document.documentElement.style.setProperty('--navbar-clearance', `${navbarClearance}px`);
+            });
+        };
+
+        updateNavbarMetrics();
+
+        const resizeObserver = new ResizeObserver(updateNavbarMetrics);
+        resizeObserver.observe(navbar);
+        window.addEventListener('resize', updateNavbarMetrics);
+
+        return () => {
+            window.cancelAnimationFrame(animationFrame);
+            resizeObserver.disconnect();
+            window.removeEventListener('resize', updateNavbarMetrics);
+        };
+    }, []);
+
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
         if (!el) return;
@@ -12,6 +46,7 @@ export default function Navbar() {
 
     return (
         <motion.nav
+            ref={navRef}
             data-navbar
             initial={{ y: -100 }}
             animate={{ y: 0 }}
@@ -30,25 +65,27 @@ export default function Navbar() {
 ">
                 <div className="flex justify-between items-center px-2 sm:px-4">
                     {/* Logo */}
-                    <a href="/" className="flex items-center gap-1">
+                    <Link href="/" className="flex items-center gap-1">
                         <div className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center overflow-hidden sm:h-10 sm:w-10">
-                            <img
+                            <Image
                                 src="/logo.png"
                                 alt="EFFEKT IA"
+                                width={40}
+                                height={40}
                                 className="w-full h-full object-cover scale-125"
                             />
                         </div>
                         <span className="font-space text-sm font-bold tracking-widest text-white sm:text-base">
                             EFFEKT IA
                         </span>
-                    </a>
+                    </Link>
 
                     {/* Links */}
                     <div className="hidden md:flex gap-8">
                         {[
                             { label: 'Servicios', href: '#servicios' },
                             { label: 'Resultados', href: '#resultados' },
-                            { label: 'Paquetes', href: '#planes' },
+                            { label: 'Planes', href: '#planes' },
                         ].map((item) => (
                             <a
                                 key={item.label}
@@ -68,7 +105,7 @@ export default function Navbar() {
 
                     {/* CTA */}
                     <a
-                        href="https://wa.me/5214445418701?text=Hola,%20quiero%20hablar%20sobre%20una%20soluci%C3%B3n%20con%20EFFEKT%20IA"
+                        href="https://wa.me/524445166077"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="

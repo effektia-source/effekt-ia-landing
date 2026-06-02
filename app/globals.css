@@ -7,6 +7,13 @@
 :root {
   --font-space: 'Space Mono', monospace;
   --font-rajdhani: 'Rajdhani', sans-serif;
+  --navbar-height: 0px;
+  --navbar-clearance: 0px;
+  --plan-card-height: 460px;
+  --plan-carousel-controls-height: 64px;
+  --plan-carousel-top-offset: clamp(34px, 5svh, 58px);
+  --plan-carousel-bottom-offset: clamp(20px, 4svh, 40px);
+  --plan-carousel-stage-shift: clamp(28px, 4svh, 40px);
 }
 
 html {
@@ -51,3 +58,18 @@ body {
 }
 
 .animate-spin-slow { animation: spin-slow 10s linear infinite; }
+
+.plans-section-layout {
+  padding-top: calc(var(--navbar-clearance) + var(--plan-carousel-top-offset));
+  padding-bottom: calc(var(--plan-carousel-controls-height) + var(--plan-carousel-bottom-offset));
+}
+
+.plans-carousel-stage {
+  transform: translateY(var(--plan-carousel-stage-shift));
+}
+
+@media (min-width: 900px) {
+  :root {
+    --plan-card-height: 500px;
+  }
+}
