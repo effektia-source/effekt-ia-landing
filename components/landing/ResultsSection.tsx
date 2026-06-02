@@ -15,7 +15,7 @@ type ResultSlide = {
 };
 
 const whatsappHref =
-    'https://wa.me/5214445418701?text=Hola,%20quiero%20mejorar%20mi%20negocio%20con%20EFFEKT%20IA';
+    'https://wa.me/524445166077';
 
 const resultSlides: ResultSlide[] = [
     {
