@@ -167,6 +167,7 @@ function PackageCard({
 }) {
     const visibleIncludes = plan.includes.slice(0, 4);
     const priceParts = splitPrice(plan);
+    const isQuotePlan = plan.id === 'modelos-ia' || plan.id === 'automatizacion-ia';
 
     return (
         <article
@@ -185,9 +186,16 @@ function PackageCard({
 
             <div className="mt-5">
                 <p className="font-space font-extrabold leading-none text-[#FF2D7A] drop-shadow-[0_0_20px_rgba(255,45,122,0.32)]">
-                    <span className="block text-[3rem] md:text-[54px]">{priceParts.main}</span>
+                    <span className="flex items-baseline gap-3 text-[3rem] md:block md:text-[54px]">
+                        <span>{priceParts.main}</span>
+                        {!isQuotePlan ? (
+                            <span className="font-space text-[0.58rem] font-bold uppercase tracking-[0.16em] text-white/42 sm:hidden">
+                                + IVA
+                            </span>
+                        ) : null}
+                    </span>
                     {priceParts.suffix ? (
-                        <span className="mt-3 block text-[0.68rem] uppercase tracking-[0.35em] text-white/65 md:text-xs [@media(max-height:780px)]:mt-2">
+                        <span className={`mt-3 text-[0.68rem] uppercase tracking-[0.35em] text-white/65 md:text-xs [@media(max-height:780px)]:mt-2 ${isQuotePlan ? 'hidden sm:block' : 'block'}`}>
                             {priceParts.suffix}
                         </span>
                     ) : null}

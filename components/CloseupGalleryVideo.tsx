@@ -212,13 +212,13 @@ export default function CloseupGalleryVideo() {
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/82 to-transparent" />
 
                 <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.25rem)] max-w-7xl flex-col justify-center pb-20 md:min-h-[calc(100dvh-10rem)] lg:min-h-[calc(100dvh-8.75rem)] lg:pb-[5.25rem]">
-                    <div className="grid items-center gap-4 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-6">
+                    <div className="grid items-center gap-2 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-6">
                         <motion.div
                             key={`${activeService.label}-copy`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.48, ease: 'easeOut' }}
-                            className="order-2 max-w-3xl text-center lg:order-1 lg:text-left"
+                            className="order-2 mt-2 max-w-3xl text-center sm:mt-0 lg:order-1 lg:text-left"
                         >
                             <h2
                                 onMouseEnter={pauseServicesAutoplay}
@@ -252,7 +252,7 @@ export default function CloseupGalleryVideo() {
                             onMouseLeave={resumeServicesAutoplay}
                             className="order-1 text-center sm:hidden"
                         >
-                            <p className="font-space text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#ff4d78] drop-shadow-[0_0_18px_rgba(255,0,92,0.36)]">
+                            <p className="font-space text-[1rem] font-extrabold uppercase tracking-[0.18em] text-white drop-shadow-[0_0_18px_rgba(255,0,92,0.46)]">
                                 {getMobileServiceTitle(activeService.label)}
                             </p>
                         </div>
@@ -264,7 +264,7 @@ export default function CloseupGalleryVideo() {
                             transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
                             onMouseEnter={pauseServicesAutoplay}
                             onMouseLeave={resumeServicesAutoplay}
-                            className="order-1 relative mx-auto aspect-[16/9] min-h-0 w-full max-w-[min(100%,25rem)] overflow-hidden rounded-[26px] bg-zinc-950 shadow-[0_34px_130px_rgba(0,0,0,0.72),0_0_70px_rgba(255,0,92,0.18),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:min-h-[23rem] sm:max-w-none sm:rounded-[30px] lg:order-2 lg:h-[55vh] lg:min-h-0 lg:translate-x-14 xl:h-[57vh]"
+                            className="order-1 relative mx-auto aspect-[16/9] min-h-0 w-full max-w-[min(100%,27rem)] overflow-hidden rounded-[26px] bg-zinc-950 shadow-[0_34px_130px_rgba(0,0,0,0.72),0_0_70px_rgba(255,0,92,0.18),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:min-h-[23rem] sm:max-w-none sm:rounded-[30px] lg:order-2 lg:h-[55vh] lg:min-h-0 lg:translate-x-14 xl:h-[57vh]"
                         >
                             <div
                                 className="absolute inset-0 bg-cover bg-center"
@@ -305,9 +305,10 @@ export default function CloseupGalleryVideo() {
                             rel="noopener noreferrer"
                             onMouseEnter={pauseServicesAutoplay}
                             onMouseLeave={resumeServicesAutoplay}
-                            className="order-1 mx-auto inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 font-space text-[0.66rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.34),inset_0_1px_0_rgba(255,255,255,0.24)] transition hover:-translate-y-0.5 hover:border-[#ffc1d2]/80 hover:shadow-[0_0_34px_rgba(255,0,60,0.44)] sm:hidden"
+                            className="relative z-30 order-1 mx-auto inline-flex min-h-10 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ffc1d2]/85 bg-[#ff005c] px-6 py-2.5 font-space text-[0.66rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_34px_rgba(255,0,92,0.72),0_0_58px_rgba(212,0,136,0.34),inset_0_1px_0_rgba(255,255,255,0.34)] transition hover:-translate-y-0.5 hover:bg-[#ff1f73] hover:shadow-[0_0_44px_rgba(255,0,92,0.82),0_0_70px_rgba(212,0,136,0.42),inset_0_1px_0_rgba(255,255,255,0.4)] [&>span]:hidden sm:hidden"
                         >
                             {getMobileServiceCta(activeService.label)}
+                            &rarr;
                             <span className="text-[#ffd0dc]">â†’</span>
                         </a>
                     </div>
