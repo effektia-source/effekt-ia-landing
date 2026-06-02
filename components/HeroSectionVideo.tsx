@@ -128,7 +128,7 @@ function ShowcaseCard({
 
     return (
         <div
-            className="relative w-[min(56vw,200px)] overflow-hidden rounded-[24px] bg-black shadow-2xl transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] sm:w-[245px] sm:rounded-[28px]"
+            className="relative w-[min(68svw,260px)] overflow-hidden rounded-[24px] bg-black shadow-2xl transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] sm:w-[245px] sm:rounded-[28px]"
             style={{
                 aspectRatio: isModelVideo ? '1020 / 1920' : '9 / 16',
                 boxShadow: active
@@ -242,7 +242,7 @@ function HeroCarousel({
             initial={reduceMotion ? false : { opacity: 0, scale: 0.94, x: 44 }}
             animate={reduceMotion ? undefined : { opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="no-scrollbar relative mx-auto mt-2 flex h-[24rem] w-full max-w-full items-center justify-center overflow-x-hidden overflow-y-visible pb-0 sm:mt-6 sm:h-[28rem] sm:-translate-y-11 sm:pb-16 lg:mt-0 lg:h-[calc(100vh-140px)] lg:min-w-0 lg:pb-20"
+            className="no-scrollbar relative mx-auto mt-2 flex h-[31rem] w-full max-w-full items-center justify-center overflow-x-hidden overflow-y-visible pb-0 sm:mt-6 sm:h-[28rem] sm:-translate-y-11 sm:pb-16 lg:mt-0 lg:h-[calc(100vh-140px)] lg:min-w-0 lg:pb-20"
             onClick={onMobileTap}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => {
@@ -278,7 +278,7 @@ function HeroCarousel({
                 return (
                     <motion.div
                         key={slide.id}
-                        className="absolute left-1/2 top-[48%] -ml-[min(28vw,100px)] -mt-[min(49.78vw,177.78px)] sm:top-[39%] sm:-ml-[122.5px] sm:-mt-[217.78px] lg:top-1/2"
+                        className="absolute left-1/2 top-[48%] -ml-[min(34svw,130px)] -mt-[min(60.44svw,231.11px)] sm:top-[39%] sm:-ml-[122.5px] sm:-mt-[217.78px] lg:top-1/2"
                         animate={{
                             x: position.x + (reduceMotion ? 0 : pointer.x * (active ? 10 : 4)),
                             y: position.y + (reduceMotion ? 0 : pointer.y * (active ? 6 : 3)),
