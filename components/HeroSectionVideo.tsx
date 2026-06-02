@@ -128,7 +128,7 @@ function ShowcaseCard({
 
     return (
         <div
-            className="relative w-[125px] overflow-hidden rounded-[22px] bg-black shadow-2xl transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] sm:w-[245px] sm:rounded-[28px]"
+            className="relative w-[min(56vw,200px)] overflow-hidden rounded-[24px] bg-black shadow-2xl transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.02] sm:w-[245px] sm:rounded-[28px]"
             style={{
                 aspectRatio: isModelVideo ? '1020 / 1920' : '9 / 16',
                 boxShadow: active
@@ -190,10 +190,12 @@ function HeroCarousel({
     activeIndex,
     setActiveIndex,
     setPaused,
+    onMobileTap,
 }: {
     activeIndex: number;
     setActiveIndex: (index: number) => void;
     setPaused: (paused: boolean) => void;
+    onMobileTap: () => void;
 }) {
     const shouldReduceMotion = useReducedMotion();
     const reduceMotion = Boolean(shouldReduceMotion);
@@ -240,7 +242,8 @@ function HeroCarousel({
             initial={reduceMotion ? false : { opacity: 0, scale: 0.94, x: 44 }}
             animate={reduceMotion ? undefined : { opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="no-scrollbar relative mx-auto mt-0 flex h-[14.5rem] w-full max-w-full items-center justify-center overflow-x-hidden overflow-y-visible pb-7 sm:mt-6 sm:h-[28rem] sm:-translate-y-11 sm:pb-16 lg:mt-0 lg:h-[calc(100vh-140px)] lg:min-w-0 lg:pb-20"
+            className="no-scrollbar relative mx-auto mt-2 flex h-[24rem] w-full max-w-full items-center justify-center overflow-x-hidden overflow-y-visible pb-0 sm:mt-6 sm:h-[28rem] sm:-translate-y-11 sm:pb-16 lg:mt-0 lg:h-[calc(100vh-140px)] lg:min-w-0 lg:pb-20"
+            onClick={onMobileTap}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => {
                 setPaused(false);
@@ -275,7 +278,7 @@ function HeroCarousel({
                 return (
                     <motion.div
                         key={slide.id}
-                        className="absolute left-1/2 top-[45%] -ml-[62.5px] -mt-[111.11px] sm:top-[39%] sm:-ml-[122.5px] sm:-mt-[217.78px] lg:top-1/2"
+                        className="absolute left-1/2 top-[48%] -ml-[min(28vw,100px)] -mt-[min(49.78vw,177.78px)] sm:top-[39%] sm:-ml-[122.5px] sm:-mt-[217.78px] lg:top-1/2"
                         animate={{
                             x: position.x + (reduceMotion ? 0 : pointer.x * (active ? 10 : 4)),
                             y: position.y + (reduceMotion ? 0 : pointer.y * (active ? 6 : 3)),
@@ -299,7 +302,7 @@ function HeroCarousel({
                 );
             })}
 
-            <div className="absolute bottom-1 left-1/2 z-[70] flex -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-black/28 px-2.5 py-1.5 backdrop-blur-xl sm:bottom-2 sm:gap-3 sm:px-3 sm:py-2 lg:bottom-5">
+            <div className="absolute bottom-2 left-1/2 z-[70] hidden -translate-x-1/2 items-center gap-2 rounded-full border border-white/10 bg-black/28 px-2.5 py-1.5 backdrop-blur-xl sm:flex sm:bottom-2 sm:gap-3 sm:px-3 sm:py-2 lg:bottom-5">
                 <button
                     type="button"
                     aria-label="Anterior"
@@ -355,10 +358,15 @@ export default function HeroSectionVideo() {
         return () => window.clearInterval(interval);
     }, [paused, reduceMotion]);
 
+    const toggleMobileAutoplay = () => {
+        if (!window.matchMedia('(max-width: 639px)').matches) return;
+        setPaused((current) => !current);
+    };
+
     return (
         <section
             id="hero"
-            className="section-screen relative w-full scroll-mt-0 overflow-hidden bg-[#050505] text-white"
+            className="section-screen relative w-full scroll-mt-0 overflow-x-hidden overflow-y-visible bg-[#050505] text-white sm:overflow-hidden"
         >
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_46%,rgba(255,0,60,0.11),transparent_34%),radial-gradient(circle_at_50%_100%,rgba(255,255,255,0.045),transparent_34%),linear-gradient(135deg,#050505_0%,#080808_50%,#050505_100%)]" />
             <motion.div
@@ -372,12 +380,12 @@ export default function HeroSectionVideo() {
             <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-black/90 to-transparent" />
             <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/78 to-transparent" />
 
-            <div className="relative z-10 mx-auto grid min-h-[inherit] max-w-7xl items-start gap-0 px-5 pb-2 pt-[4.25rem] sm:items-center sm:gap-5 sm:px-6 sm:pb-8 sm:pt-32 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] lg:px-10 lg:pb-7 lg:pt-28 xl:px-6">
+            <div className="relative z-10 mx-auto grid min-h-[inherit] max-w-7xl items-start gap-0 px-5 pb-8 pt-[4.25rem] sm:items-center sm:gap-5 sm:px-6 sm:pb-8 sm:pt-32 lg:grid-cols-[minmax(0,0.45fr)_minmax(0,0.55fr)] lg:px-10 lg:pb-7 lg:pt-28 xl:px-6">
                 <motion.div
                     initial={reduceMotion ? false : { y: 28, opacity: 0 }}
                     animate={reduceMotion ? undefined : { y: 0, opacity: 1 }}
                     transition={{ duration: 0.76, ease: 'easeOut' }}
-                    className="max-w-[37rem]"
+                    className="hidden max-w-[37rem] sm:block"
                 >
                     <motion.div
                         initial={reduceMotion ? false : { y: 12, opacity: 0 }}
@@ -450,6 +458,7 @@ export default function HeroSectionVideo() {
                         activeIndex={activeIndex}
                         setActiveIndex={setActiveIndex}
                         setPaused={setPaused}
+                        onMobileTap={toggleMobileAutoplay}
                     />
                 </div>
 
@@ -457,7 +466,7 @@ export default function HeroSectionVideo() {
                     href={whatsappHref}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative -mt-1 inline-flex min-h-10 w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 text-center font-space text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%] sm:hidden"
+                    className="group relative mt-3 inline-flex min-h-10 w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 text-center font-space text-[0.68rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.36),inset_0_1px_0_rgba(255,255,255,0.24)] transition-all duration-[250ms] ease-out before:absolute before:inset-y-0 before:-left-16 before:w-12 before:skew-x-[-18deg] before:bg-white/35 before:blur-md before:transition-all before:duration-500 hover:-translate-y-0.5 hover:scale-[1.03] hover:border-[#ffc1d2]/80 hover:bg-[position:100%_0] hover:shadow-[0_0_36px_rgba(255,0,60,0.46),0_0_56px_rgba(190,0,120,0.24),inset_0_1px_0_rgba(255,255,255,0.34)] hover:before:left-[120%] sm:hidden"
                 >
                     <span className="relative z-10">QUIERO MÁS CLIENTES</span>
                     <span className="relative z-10 transition-transform duration-300 ease-out group-hover:translate-x-1">→</span>

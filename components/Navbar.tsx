@@ -2,11 +2,11 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Navbar() {
     const navRef = useRef<HTMLElement>(null);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const navbar = navRef.current;
@@ -44,6 +44,17 @@ export default function Navbar() {
         el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
+    const navItems = [
+        { label: 'Servicios', href: '#servicios' },
+        { label: 'Resultados', href: '#resultados' },
+        { label: 'Planes', href: '#planes' },
+    ];
+
+    const handleSectionClick = (href: string) => {
+        scrollToSection(href.slice(1));
+        setMobileMenuOpen(false);
+    };
+
     return (
         <motion.nav
             ref={navRef}
@@ -65,7 +76,14 @@ export default function Navbar() {
 ">
                 <div className="flex justify-between items-center px-2 sm:px-4">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-1">
+                    <a
+                        href="#hero"
+                        onClick={(event) => {
+                            event.preventDefault();
+                            scrollToSection('hero');
+                        }}
+                        className="flex items-center gap-1"
+                    >
                         <div className="w-8 h-8 rounded-lg bg-white/10 backdrop-blur-md flex items-center justify-center overflow-hidden sm:h-10 sm:w-10">
                             <Image
                                 src="/logo.png"
@@ -78,22 +96,18 @@ export default function Navbar() {
                         <span className="font-space text-sm font-bold tracking-widest text-white sm:text-base">
                             EFFEKT IA
                         </span>
-                    </Link>
+                    </a>
 
                     {/* Links */}
                     <div className="hidden md:flex gap-8">
-                        {[
-                            { label: 'Servicios', href: '#servicios' },
-                            { label: 'Resultados', href: '#resultados' },
-                            { label: 'Planes', href: '#planes' },
-                        ].map((item) => (
+                        {navItems.map((item) => (
                             <a
                                 key={item.label}
                                 href={item.href}
                                 onClick={(event) => {
                                     if (item.href === '#servicios' || item.href === '#resultados') {
                                         event.preventDefault();
-                                        scrollToSection(item.href.slice(1));
+                                        handleSectionClick(item.href);
                                     }
                                 }}
                                 className="font-rajdhani text-sm tracking-wide text-white/70 hover:text-white transition"
@@ -102,6 +116,20 @@ export default function Navbar() {
                             </a>
                         ))}
                     </div>
+
+                    <button
+                        type="button"
+                        aria-label={mobileMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
+                        aria-expanded={mobileMenuOpen}
+                        onClick={() => setMobileMenuOpen((open) => !open)}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 backdrop-blur transition hover:border-[#ff8bb0]/60 hover:text-white md:hidden"
+                    >
+                        <span className="relative h-3.5 w-4">
+                            <span className={`absolute left-0 top-0 h-px w-4 bg-current transition ${mobileMenuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
+                            <span className={`absolute left-0 top-[7px] h-px w-4 bg-current transition ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                            <span className={`absolute left-0 top-[14px] h-px w-4 bg-current transition ${mobileMenuOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
+                        </span>
+                    </button>
 
                     {/* CTA */}
                     <a
@@ -129,6 +157,26 @@ export default function Navbar() {
                         <span className="relative z-10">EMPEZAR AHORA</span>
                     </a>
                 </div>
+
+                {mobileMenuOpen ? (
+                    <div className="absolute left-4 right-4 top-full mt-3 rounded-2xl border border-white/10 bg-black/78 px-3 py-3 shadow-[0_24px_80px_rgba(0,0,0,0.48)] backdrop-blur-2xl md:hidden">
+                        <div className="flex flex-col">
+                            {navItems.map((item) => (
+                                <a
+                                    key={item.label}
+                                    href={item.href}
+                                    onClick={(event) => {
+                                        event.preventDefault();
+                                        handleSectionClick(item.href);
+                                    }}
+                                    className="rounded-xl px-4 py-3 font-space text-[0.68rem] font-bold uppercase tracking-[0.18em] text-white/76 transition hover:bg-white/[0.06] hover:text-white"
+                                >
+                                    {item.label}
+                                </a>
+                            ))}
+                        </div>
+                    </div>
+                ) : null}
             </div>
         </motion.nav>
     );

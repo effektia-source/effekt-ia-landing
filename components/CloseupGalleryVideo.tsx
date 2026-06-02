@@ -149,6 +149,22 @@ const ShowcaseSection = ({
     );
 };
 
+function getMobileServiceTitle(label: string) {
+    if (label.includes('LANDING')) return 'Landing Pages';
+    if (label.includes('FLYERS')) return 'Flyers';
+    if (label.includes('MODELOS')) return 'Modelos IA';
+    if (label.includes('AUTOMATIZ')) return 'Automatizacion IA';
+    return 'Videos';
+}
+
+function getMobileServiceCta(label: string) {
+    if (label.includes('LANDING')) return 'QUIERO MI LANDING';
+    if (label.includes('FLYERS')) return 'QUIERO MIS FLYERS';
+    if (label.includes('MODELOS')) return 'SOLICITAR COTIZACION';
+    if (label.includes('AUTOMATIZ')) return 'QUIERO AUTOMATIZAR';
+    return 'QUIERO MIS VIDEOS';
+}
+
 export default function CloseupGalleryVideo() {
     const [activeServiceIndex, setActiveServiceIndex] = useState(0);
     const [servicesPaused, setServicesPaused] = useState(false);
@@ -188,33 +204,33 @@ export default function CloseupGalleryVideo() {
   "
         >
             <section
-                className="section-screen relative overflow-hidden bg-[#030303] px-6 pb-8 pt-28 text-white snap-start sm:pt-32 lg:px-10 lg:pb-7 lg:pt-28"
+                className="section-screen relative overflow-hidden bg-[#030303] px-5 pb-8 pt-[4.25rem] text-white snap-start sm:px-6 sm:pt-32 lg:px-10 lg:pb-7 lg:pt-28"
             >
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_46%,rgba(255,0,92,0.16),transparent_36%),radial-gradient(circle_at_20%_18%,rgba(190,0,120,0.1),transparent_34%),linear-gradient(135deg,#030303_0%,#080808_52%,#030303_100%)]" />
                 <div className="absolute right-[7%] top-[18%] h-[34rem] w-[34rem] rounded-full bg-[#ff003c]/10 blur-3xl" />
                 <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/88 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/82 to-transparent" />
 
-                <div className="relative z-10 mx-auto flex min-h-[calc(100svh-9rem)] max-w-7xl flex-col justify-center pb-28 md:min-h-[calc(100dvh-10rem)] lg:min-h-[calc(100dvh-8.75rem)] lg:pb-[5.25rem]">
-                    <div className="grid items-center gap-6 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)]">
+                <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.25rem)] max-w-7xl flex-col justify-center pb-20 md:min-h-[calc(100dvh-10rem)] lg:min-h-[calc(100dvh-8.75rem)] lg:pb-[5.25rem]">
+                    <div className="grid items-center gap-4 lg:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] lg:gap-6">
                         <motion.div
                             key={`${activeService.label}-copy`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.48, ease: 'easeOut' }}
-                            className="order-2 max-w-3xl lg:order-1"
+                            className="order-2 max-w-3xl text-center lg:order-1 lg:text-left"
                         >
                             <h2
                                 onMouseEnter={pauseServicesAutoplay}
                                 onMouseLeave={resumeServicesAutoplay}
-                                className="max-w-[33rem] text-[2.15rem] font-bold leading-[0.95] tracking-tight text-white sm:text-[2.85rem] lg:text-[3.15rem] xl:text-[3.55rem]"
+                                className="mx-auto max-w-[23rem] text-[1.8rem] font-bold leading-[0.95] tracking-tight text-white sm:max-w-[33rem] sm:text-[2.85rem] lg:mx-0 lg:text-[3.15rem] xl:text-[3.55rem]"
                             >
                                 {activeService.headline}
                             </h2>
                             <p
                                 onMouseEnter={pauseServicesAutoplay}
                                 onMouseLeave={resumeServicesAutoplay}
-                                className="mt-3.5 max-w-lg text-base leading-relaxed text-white/74 sm:text-[1.05rem] lg:text-base"
+                                className="mt-3.5 hidden max-w-lg text-base leading-relaxed text-white/74 sm:block sm:text-[1.05rem] lg:text-base"
                             >
                                 {activeService.description}
                             </p>
@@ -224,12 +240,22 @@ export default function CloseupGalleryVideo() {
                                 rel="noopener noreferrer"
                                 onMouseEnter={pauseServicesAutoplay}
                                 onMouseLeave={resumeServicesAutoplay}
-                                className="mt-4 inline-flex min-h-[46px] items-center gap-2 rounded-full border border-[#ff2f68]/70 bg-black/24 px-7 py-3 font-space text-xs font-bold uppercase tracking-[0.18em] text-white/90 shadow-[0_0_26px_rgba(255,0,92,0.22)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-[#ff8bb0]/85 hover:text-white hover:shadow-[0_0_34px_rgba(255,0,92,0.36)] md:px-8 md:py-3.5 md:text-sm"
+                                className="mt-4 hidden min-h-[46px] items-center gap-2 rounded-full border border-[#ff2f68]/70 bg-black/24 px-7 py-3 font-space text-xs font-bold uppercase tracking-[0.18em] text-white/90 shadow-[0_0_26px_rgba(255,0,92,0.22)] backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-[#ff8bb0]/85 hover:text-white hover:shadow-[0_0_34px_rgba(255,0,92,0.36)] sm:inline-flex md:px-8 md:py-3.5 md:text-sm"
                             >
                                 Me interesa
                                 <span className="text-[#ff4d78]">→</span>
                             </a>
                         </motion.div>
+
+                        <div
+                            onMouseEnter={pauseServicesAutoplay}
+                            onMouseLeave={resumeServicesAutoplay}
+                            className="order-1 text-center sm:hidden"
+                        >
+                            <p className="font-space text-[0.68rem] font-bold uppercase tracking-[0.24em] text-[#ff4d78] drop-shadow-[0_0_18px_rgba(255,0,92,0.36)]">
+                                {getMobileServiceTitle(activeService.label)}
+                            </p>
+                        </div>
 
                         <motion.div
                             key={`${activeService.label}-visual`}
@@ -238,7 +264,7 @@ export default function CloseupGalleryVideo() {
                             transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
                             onMouseEnter={pauseServicesAutoplay}
                             onMouseLeave={resumeServicesAutoplay}
-                            className="order-1 relative aspect-[16/9] min-h-[18rem] overflow-hidden rounded-[30px] bg-zinc-950 shadow-[0_34px_130px_rgba(0,0,0,0.72),0_0_70px_rgba(255,0,92,0.18),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:min-h-[23rem] lg:order-2 lg:h-[55vh] lg:min-h-0 lg:translate-x-14 xl:h-[57vh]"
+                            className="order-1 relative mx-auto aspect-[16/9] min-h-0 w-full max-w-[min(100%,25rem)] overflow-hidden rounded-[26px] bg-zinc-950 shadow-[0_34px_130px_rgba(0,0,0,0.72),0_0_70px_rgba(255,0,92,0.18),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:min-h-[23rem] sm:max-w-none sm:rounded-[30px] lg:order-2 lg:h-[55vh] lg:min-h-0 lg:translate-x-14 xl:h-[57vh]"
                         >
                             <div
                                 className="absolute inset-0 bg-cover bg-center"
@@ -272,6 +298,18 @@ export default function CloseupGalleryVideo() {
                                 </p>
                             </div>
                         </motion.div>
+
+                        <a
+                            href="https://wa.me/524445166077"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onMouseEnter={pauseServicesAutoplay}
+                            onMouseLeave={resumeServicesAutoplay}
+                            className="order-1 mx-auto inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-[#ff8bb0]/60 bg-[linear-gradient(110deg,#ff003c_0%,#97005f_48%,#ff003c_100%)] bg-[length:180%_100%] px-6 py-2.5 font-space text-[0.66rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_24px_rgba(255,0,60,0.34),inset_0_1px_0_rgba(255,255,255,0.24)] transition hover:-translate-y-0.5 hover:border-[#ffc1d2]/80 hover:shadow-[0_0_34px_rgba(255,0,60,0.44)] sm:hidden"
+                        >
+                            {getMobileServiceCta(activeService.label)}
+                            <span className="text-[#ffd0dc]">â†’</span>
+                        </a>
                     </div>
 
                     <div
@@ -281,7 +319,7 @@ export default function CloseupGalleryVideo() {
                     >
                         <div className="mx-auto max-w-7xl">
                             <div className="flex max-h-[80px] flex-col gap-2 border-t border-white/10 pt-2.5 lg:flex-row lg:items-end lg:justify-between">
-                                <div className="no-scrollbar -mx-6 overflow-x-auto px-6 lg:mx-0 lg:flex-1 lg:overflow-visible lg:px-0">
+                                <div className="hidden lg:mx-0 lg:block lg:flex-1 lg:overflow-visible lg:px-0">
                                     <div className="grid min-w-[48rem] grid-cols-5 lg:min-w-0">
                                         {services.map((service, index) => {
                                             const active = index === activeServiceIndex;
