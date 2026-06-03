@@ -68,7 +68,7 @@ export default function PricingTiers() {
                             </ul>
 
                             <a
-                                href={`https://wa.me/5214445418701?text=Hola,%20me%20interesa%20el%20plan%20${tier.name}%20de%20EFFEKT%20IA`}
+                                href={`https://wa.me/524445166077?text=Hola,%20me%20interesa%20el%20plan%20${tier.name}%20de%20EFFEKT%20IA`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="w-full text-center py-4 bg-white/10 hover:bg-white text-white hover:text-black font-space font-bold rounded-lg transition-all duration-300 tracking-widest text-sm border border-white/10 group-hover:border-transparent"

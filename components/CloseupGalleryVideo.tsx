@@ -158,11 +158,16 @@ function getMobileServiceTitle(label: string) {
 }
 
 function getMobileServiceCta(label: string) {
-    if (label.includes('LANDING')) return 'QUIERO MI LANDING';
-    if (label.includes('FLYERS')) return 'QUIERO MIS FLYERS';
-    if (label.includes('MODELOS')) return 'SOLICITAR COTIZACION';
-    if (label.includes('AUTOMATIZ')) return 'QUIERO AUTOMATIZAR';
-    return 'QUIERO MIS VIDEOS';
+    void label;
+    return 'Solicitar Cotización';
+}
+
+function getMobileServiceSubcopy(label: string) {
+    if (label.includes('MODELOS')) return 'Imágenes premium para que tu marca se vea más deseable.';
+    if (label.includes('VIDEOS')) return 'Videos verticales diseñados para captar atención y generar acción.';
+    if (label.includes('AUTOMATIZ')) return 'Sistemas inteligentes que responden, califican y venden por ti.';
+    if (label.includes('LANDING')) return 'Páginas diseñadas para convertir visitas en mensajes y clientes.';
+    return 'Diseños premium para convertir promociones en mensajes y ventas.';
 }
 
 export default function CloseupGalleryVideo() {
@@ -172,6 +177,10 @@ export default function CloseupGalleryVideo() {
     const isPandaVideo = activeService.video.includes('reels_personaje_viral_panda.mp4');
     const pauseServicesAutoplay = () => setServicesPaused(true);
     const resumeServicesAutoplay = () => setServicesPaused(false);
+    const toggleMobileServicesAutoplay = () => {
+        if (!window.matchMedia('(max-width: 639px)').matches) return;
+        setServicesPaused((current) => !current);
+    };
     const goToPreviousService = () => {
         setActiveServiceIndex((current) => (current - 1 + services.length) % services.length);
     };
@@ -218,15 +227,18 @@ export default function CloseupGalleryVideo() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.48, ease: 'easeOut' }}
-                            className="order-2 mt-2 max-w-3xl text-center sm:mt-0 lg:order-1 lg:text-left"
+                            className="order-2 mt-1 max-w-3xl text-center sm:mt-0 lg:order-1 lg:text-left"
                         >
                             <h2
                                 onMouseEnter={pauseServicesAutoplay}
                                 onMouseLeave={resumeServicesAutoplay}
-                                className="mx-auto max-w-[23rem] text-[1.8rem] font-bold leading-[0.95] tracking-tight text-white sm:max-w-[33rem] sm:text-[2.85rem] lg:mx-0 lg:text-[3.15rem] xl:text-[3.55rem]"
+                                className="mx-auto max-w-[23rem] bg-gradient-to-b from-white via-[#ff7aa2] to-[#ff005c] bg-clip-text text-[2rem] font-bold leading-[0.9] tracking-normal text-transparent drop-shadow-[0_0_18px_rgba(255,0,92,0.22)] sm:max-w-[33rem] sm:text-[2.85rem] sm:leading-[0.95] sm:tracking-tight sm:text-white sm:drop-shadow-none lg:mx-0 lg:text-[3.15rem] xl:text-[3.55rem]"
                             >
                                 {activeService.headline}
                             </h2>
+                            <p className="mx-auto mt-2.5 max-w-[18rem] font-rajdhani text-[0.82rem] font-medium leading-snug tracking-[0.02em] text-cyan-50/62 sm:hidden">
+                                {getMobileServiceSubcopy(activeService.label)}
+                            </p>
                             <p
                                 onMouseEnter={pauseServicesAutoplay}
                                 onMouseLeave={resumeServicesAutoplay}
@@ -264,8 +276,14 @@ export default function CloseupGalleryVideo() {
                             transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
                             onMouseEnter={pauseServicesAutoplay}
                             onMouseLeave={resumeServicesAutoplay}
-                            className="order-1 relative mx-auto aspect-[16/9] min-h-0 w-full max-w-[min(100%,27rem)] overflow-hidden rounded-[26px] bg-zinc-950 shadow-[0_34px_130px_rgba(0,0,0,0.72),0_0_70px_rgba(255,0,92,0.18),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:min-h-[23rem] sm:max-w-none sm:rounded-[30px] lg:order-2 lg:h-[55vh] lg:min-h-0 lg:translate-x-14 xl:h-[57vh]"
+                            onClick={toggleMobileServicesAutoplay}
+                            className="order-3 relative mx-auto aspect-[16/9] min-h-0 w-full max-w-[min(100%,27rem)] overflow-hidden rounded-[26px] bg-zinc-950 shadow-[0_26px_86px_rgba(0,0,0,0.78),0_0_42px_rgba(255,0,92,0.14),0_0_34px_rgba(0,229,255,0.08),inset_0_0_0_1px_rgba(255,255,255,0.13)] ring-1 ring-white/[0.04] sm:order-1 sm:min-h-[23rem] sm:max-w-none sm:rounded-[30px] sm:shadow-[0_34px_130px_rgba(0,0,0,0.72),0_0_70px_rgba(255,0,92,0.18),inset_0_0_0_1px_rgba(255,255,255,0.08)] sm:ring-0 lg:order-2 lg:h-[55vh] lg:min-h-0 lg:translate-x-14 xl:h-[57vh]"
                         >
+                            {servicesPaused ? (
+                                <div className="pointer-events-none absolute right-4 top-4 z-30 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-100/18 bg-black/70 text-cyan-50/88 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_18px_rgba(0,229,255,0.08)] backdrop-blur-md sm:hidden">
+                                    <span className="font-space text-[0.62rem] font-bold leading-none">II</span>
+                                </div>
+                            ) : null}
                             <div
                                 className="absolute inset-0 bg-cover bg-center"
                                 style={{ backgroundImage: isPandaVideo ? 'none' : `url('${activeService.image}')` }}
@@ -292,6 +310,8 @@ export default function CloseupGalleryVideo() {
                             <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.22)_0%,rgba(0,0,0,0.04)_48%,rgba(0,0,0,0.18)_100%)]" />
                             <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.02)_0%,rgba(0,0,0,0.04)_45%,rgba(0,0,0,0.34)_100%)]" />
                             <div className="absolute inset-0 bg-[radial-gradient(circle_at_28%_24%,rgba(255,0,92,0.08),transparent_36%)]" />
+                            <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_38%,rgba(0,0,0,0.28)_70%,rgba(0,0,0,0.72)_100%)] sm:hidden" />
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_16%_18%,rgba(0,229,255,0.11),transparent_34%),radial-gradient(circle_at_86%_18%,rgba(255,0,92,0.12),transparent_38%)] mix-blend-screen sm:hidden" />
                             <div className="absolute bottom-6 left-6 right-6 lg:bottom-8 lg:left-8">
                                 <p className="font-space text-[0.64rem] font-bold uppercase tracking-[0.2em] text-white/54">
                                     {activeService.label}
@@ -305,7 +325,7 @@ export default function CloseupGalleryVideo() {
                             rel="noopener noreferrer"
                             onMouseEnter={pauseServicesAutoplay}
                             onMouseLeave={resumeServicesAutoplay}
-                            className="relative z-30 order-1 mx-auto inline-flex min-h-10 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ffc1d2]/85 bg-[#ff005c] px-6 py-2.5 font-space text-[0.66rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_34px_rgba(255,0,92,0.72),0_0_58px_rgba(212,0,136,0.34),inset_0_1px_0_rgba(255,255,255,0.34)] transition hover:-translate-y-0.5 hover:bg-[#ff1f73] hover:shadow-[0_0_44px_rgba(255,0,92,0.82),0_0_70px_rgba(212,0,136,0.42),inset_0_1px_0_rgba(255,255,255,0.4)] [&>span]:hidden sm:hidden"
+                            className="relative z-30 order-4 mx-auto inline-flex min-h-10 items-center justify-center gap-2 overflow-hidden rounded-full border border-[#ffc1d2]/85 bg-[#ff005c] px-6 py-2.5 font-space text-[0.66rem] font-bold uppercase tracking-[0.14em] text-white shadow-[0_0_10px_rgba(255,0,92,0.24),0_0_16px_rgba(212,0,136,0.1),inset_0_1px_0_rgba(255,255,255,0.34)] transition hover:-translate-y-0.5 hover:bg-[#ff1f73] hover:shadow-[0_0_14px_rgba(255,0,92,0.32),0_0_20px_rgba(212,0,136,0.14),inset_0_1px_0_rgba(255,255,255,0.4)] [&>span]:hidden sm:hidden"
                         >
                             {getMobileServiceCta(activeService.label)}
                             &rarr;

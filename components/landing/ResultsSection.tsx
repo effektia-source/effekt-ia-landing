@@ -1,6 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import type { MouseEvent } from 'react';
 import { useEffect, useState } from 'react';
 
 type ResultSlide = {
@@ -75,6 +76,22 @@ const resultSlides: ResultSlide[] = [
     },
 ];
 
+function getMobileResultSubcopy(slide: ResultSlide) {
+    if (slide.label === 'SEO' || slide.label === 'GEO') {
+        return 'Contenido optimizado para aparecer en Google y respuestas de IA.';
+    }
+
+    if (slide.label === 'WEB + REDES') {
+        return 'Páginas diseñadas para convertir visitas en mensajes y clientes.';
+    }
+
+    if (slide.eyebrow.includes('AUTOMATIZ')) {
+        return 'Sistemas inteligentes que responden, califican y venden por ti.';
+    }
+
+    return 'Contenido diseñado para generar autoridad y ventas.';
+}
+
 export default function ResultsSection() {
     const shouldReduceMotion = useReducedMotion();
     const reduceMotion = Boolean(shouldReduceMotion);
@@ -98,6 +115,12 @@ export default function ResultsSection() {
 
     const goToNext = () => {
         setActiveIndex((current) => (current + 1) % resultSlides.length);
+    };
+
+    const toggleMobileAutoplay = (event: MouseEvent<HTMLElement>) => {
+        if (!window.matchMedia('(max-width: 639px)').matches) return;
+        if ((event.target as HTMLElement).closest('a, button')) return;
+        setIsPaused((current) => !current);
     };
 
     const sweepInitial = reduceMotion ? false : { opacity: 0, x: -18, clipPath: 'inset(0 100% 0 0)' };
@@ -164,8 +187,14 @@ export default function ResultsSection() {
                         transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                         onMouseEnter={() => setIsPaused(true)}
                         onMouseLeave={() => setIsPaused(false)}
-                        className="max-w-[520px]"
+                        onClick={toggleMobileAutoplay}
+                        className="relative max-w-[520px]"
                     >
+                        {isPaused ? (
+                            <div className="pointer-events-none absolute right-0 top-0 z-30 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-100/18 bg-black/70 text-cyan-50/88 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_18px_rgba(0,229,255,0.08)] backdrop-blur-md sm:hidden">
+                                <span className="font-space text-[0.62rem] font-bold leading-none">II</span>
+                            </div>
+                        ) : null}
                         <motion.div
                             initial={sweepInitial}
                             animate={sweepAnimate}
@@ -195,7 +224,8 @@ export default function ResultsSection() {
                             transition={sweepTransition(0.16)}
                             className="mt-4 max-w-xl text-[0.98rem] leading-relaxed text-white/78 drop-shadow-[0_10px_30px_rgba(0,0,0,0.7)] sm:mt-4 sm:text-[1.04rem] lg:text-base"
                         >
-                            {activeSlide.description}
+                            <span className="sm:hidden">{getMobileResultSubcopy(activeSlide)}</span>
+                            <span className="hidden sm:inline">{activeSlide.description}</span>
                         </motion.p>
 
                         <motion.div

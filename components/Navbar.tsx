@@ -45,6 +45,7 @@ export default function Navbar() {
     };
 
     const navItems = [
+        { label: 'Inicio', href: '#hero' },
         { label: 'Servicios', href: '#servicios' },
         { label: 'Resultados', href: '#resultados' },
         { label: 'Planes', href: '#planes' },
@@ -105,7 +106,7 @@ export default function Navbar() {
                                 key={item.label}
                                 href={item.href}
                                 onClick={(event) => {
-                                    if (item.href === '#servicios' || item.href === '#resultados') {
+                                    if (item.href === '#hero' || item.href === '#servicios' || item.href === '#resultados') {
                                         event.preventDefault();
                                         handleSectionClick(item.href);
                                     }
@@ -117,19 +118,41 @@ export default function Navbar() {
                         ))}
                     </div>
 
-                    <button
-                        type="button"
-                        aria-label={mobileMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
-                        aria-expanded={mobileMenuOpen}
-                        onClick={() => setMobileMenuOpen((open) => !open)}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 backdrop-blur transition hover:border-[#ff8bb0]/60 hover:text-white md:hidden"
-                    >
-                        <span className="relative h-3.5 w-4">
-                            <span className={`absolute left-0 top-0 h-px w-4 bg-current transition ${mobileMenuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
-                            <span className={`absolute left-0 top-[7px] h-px w-4 bg-current transition ${mobileMenuOpen ? 'opacity-0' : ''}`} />
-                            <span className={`absolute left-0 top-[14px] h-px w-4 bg-current transition ${mobileMenuOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
-                        </span>
-                    </button>
+                    <div className="relative md:hidden">
+                        <button
+                            type="button"
+                            aria-label={mobileMenuOpen ? 'Cerrar menu' : 'Abrir menu'}
+                            aria-expanded={mobileMenuOpen}
+                            onClick={() => setMobileMenuOpen((open) => !open)}
+                            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white/80 backdrop-blur transition hover:border-[#ff8bb0]/60 hover:text-white"
+                        >
+                            <span className="relative h-3.5 w-4">
+                                <span className={`absolute left-0 top-0 h-px w-4 bg-current transition ${mobileMenuOpen ? 'translate-y-[7px] rotate-45' : ''}`} />
+                                <span className={`absolute left-0 top-[7px] h-px w-4 bg-current transition ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+                                <span className={`absolute left-0 top-[14px] h-px w-4 bg-current transition ${mobileMenuOpen ? '-translate-y-[7px] -rotate-45' : ''}`} />
+                            </span>
+                        </button>
+
+                        {mobileMenuOpen ? (
+                            <div className="absolute right-0 top-full mt-2 w-max min-w-[10.5rem] rounded-2xl border border-cyan-100/20 bg-[rgba(0,0,0,0.95)] px-1.5 py-1.5 shadow-[0_16px_42px_rgba(0,0,0,0.74),0_0_22px_rgba(0,229,255,0.09)] backdrop-blur-md">
+                                <div className="flex flex-col gap-0.5">
+                                    {navItems.map((item) => (
+                                        <a
+                                            key={item.label}
+                                            href={item.href}
+                                            onClick={(event) => {
+                                                event.preventDefault();
+                                                handleSectionClick(item.href);
+                                            }}
+                                            className="rounded-xl px-3 py-2 font-space text-[0.66rem] font-bold uppercase tracking-[0.16em] text-white/90 transition hover:bg-cyan-300/[0.08] hover:text-cyan-50"
+                                        >
+                                            {item.label}
+                                        </a>
+                                    ))}
+                                </div>
+                            </div>
+                        ) : null}
+                    </div>
 
                     {/* CTA */}
                     <a
@@ -158,25 +181,6 @@ export default function Navbar() {
                     </a>
                 </div>
 
-                {mobileMenuOpen ? (
-                    <div className="absolute left-4 right-4 top-full mt-3 rounded-2xl border border-white/10 bg-black/78 px-3 py-3 shadow-[0_24px_80px_rgba(0,0,0,0.48)] backdrop-blur-2xl md:hidden">
-                        <div className="flex flex-col">
-                            {navItems.map((item) => (
-                                <a
-                                    key={item.label}
-                                    href={item.href}
-                                    onClick={(event) => {
-                                        event.preventDefault();
-                                        handleSectionClick(item.href);
-                                    }}
-                                    className="rounded-xl px-4 py-3 font-space text-[0.68rem] font-bold uppercase tracking-[0.18em] text-white/76 transition hover:bg-white/[0.06] hover:text-white"
-                                >
-                                    {item.label}
-                                </a>
-                            ))}
-                        </div>
-                    </div>
-                ) : null}
             </div>
         </motion.nav>
     );

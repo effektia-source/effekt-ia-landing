@@ -1,6 +1,7 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import type { MouseEvent } from 'react';
 import { useEffect, useMemo, useState } from 'react';
 
 type PackagePlan = {
@@ -157,13 +158,17 @@ function splitPrice(plan: PackagePlan) {
 function PackageCard({
     plan,
     active,
+    paused,
     onMouseEnter,
     onMouseLeave,
+    onClick,
 }: {
     plan: PackagePlan;
     active: boolean;
+    paused: boolean;
     onMouseEnter?: () => void;
     onMouseLeave?: () => void;
+    onClick?: (event: MouseEvent<HTMLElement>) => void;
 }) {
     const visibleIncludes = plan.includes.slice(0, 4);
     const priceParts = splitPrice(plan);
@@ -174,8 +179,14 @@ function PackageCard({
         <article
             onMouseEnter={active ? onMouseEnter : undefined}
             onMouseLeave={active ? onMouseLeave : undefined}
+            onClick={active ? onClick : undefined}
             className={`relative flex h-[460px] min-h-0 w-[calc(100vw-32px)] max-w-[390px] flex-col overflow-hidden rounded-[28px] border px-5 py-5 transition-colors md:w-[390px] md:px-7 md:py-6 min-[900px]:h-[500px] min-[900px]:px-[30px] min-[900px]:py-7 ${active ? 'border-white/18 bg-[radial-gradient(circle_at_top,rgba(255,0,110,0.12),transparent_45%),linear-gradient(180deg,#111111_0%,#080808_48%,#050505_100%)] shadow-[0_0_70px_rgba(255,0,110,0.22),0_28px_90px_rgba(0,0,0,0.82),inset_0_0_36px_rgba(255,0,110,0.06)] hover:border-[#ff006e]/55' : 'border-white/10 bg-[radial-gradient(circle_at_top,rgba(255,0,110,0.08),transparent_45%),linear-gradient(180deg,#101010_0%,#070707_48%,#040404_100%)] shadow-[0_24px_70px_rgba(0,0,0,0.76),inset_0_0_28px_rgba(255,0,110,0.035)]'}`}
         >
+            {active && paused ? (
+                <div className="pointer-events-none absolute right-4 top-4 z-30 flex h-8 w-8 items-center justify-center rounded-full border border-cyan-100/18 bg-black/70 text-cyan-50/88 shadow-[0_10px_30px_rgba(0,0,0,0.5),0_0_18px_rgba(0,229,255,0.08)] backdrop-blur-md sm:hidden">
+                    <span className="font-space text-[0.62rem] font-bold leading-none">II</span>
+                </div>
+            ) : null}
             <div className="pointer-events-none absolute -right-24 -top-24 h-56 w-56 rounded-full bg-[#ff005a]/18 blur-3xl" />
             <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#ff8bb0]/50 to-transparent" />
 
@@ -303,6 +314,12 @@ export default function PackagesSection() {
         setActiveIndex((current) => (current + 1) % packages.length);
     };
 
+    const toggleMobileAutoplay = (event: MouseEvent<HTMLElement>) => {
+        if (!window.matchMedia('(max-width: 639px)').matches) return;
+        if ((event.target as HTMLElement).closest('a, button')) return;
+        setPaused((current) => !current);
+    };
+
     const getSideOffset = (level: 1 | 2, scale: number) => {
         const width = viewportWidth || 1280;
         const sectionPadding = width >= 1024 ? 40 : width >= 640 ? 32 : 20;
@@ -379,8 +396,10 @@ export default function PackagesSection() {
                                     <PackageCard
                                         plan={plan}
                                         active={active}
+                                        paused={paused}
                                         onMouseEnter={() => setPaused(true)}
                                         onMouseLeave={() => setPaused(false)}
+                                        onClick={toggleMobileAutoplay}
                                     />
                                 </div>
                             </motion.div>
